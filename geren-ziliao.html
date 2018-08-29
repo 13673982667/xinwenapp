@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/geren-ziliao.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav-tab.css"/>
+		<style>
+		</style>
+		
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav1 "></header>
+		<div class="mui-content" >
+
+			<div class="ziliao-cart tp-padding" style="padding-top: 20px;">
+				<div class="bg-blur"></div>
+				<div class="bg-blur1"></div>
+				<div class="ziliao-wrap">
+					<div class="back">
+						<a class="mui-action-back mui-icon mui-icon-left-nav"></a>
+					</div>
+					<div class="head">
+						<img src="img/my-head.png" style="border-radius: 50%;"/>
+					</div>
+					<p class="nickname">
+						素心。
+					</p>
+					<p class="qianming">
+<!--						微笑向暖 安之若素。-->
+					</p>
+					<ul>
+						<li>
+							<p class="bianji-num">3</p><span>编辑</span></li>
+						<li>
+							<p class="guanzhu-num">57</p><span>关注</span></li>
+						<li>
+							<p class="fensi-num">2.6万</p><span>粉丝</span></li>
+					</ul>
+				</div>
+			</div>
+			<div class="content content-all">
+				<!--<div class="news_list">
+					<p class="desc tp-padding">梦幻库尔滨，这里才是冬天的神话世界</p>
+					<p>
+						<img src="img/kuerbin.png" />
+					</p>
+					<div class="fenxiang clearfix tp-padding">
+						<span class="fl">
+							分享到
+						</span>
+						<ul class="clearfix fl">
+							<li><img src="img/pengyouquan.png" /></li>
+							<li><img src="img/weixin.png" /></li>
+							<li><img src="img/qq.png" /></li>
+							<li><img src="img/qq-kongjian.png" /></li>
+						</ul>
+					</div>
+				</div>-->
+				<ul class="">
+					<!--<li class=" mui-media">
+						<div class=' top-con tp-padding'>
+					
+							<div class=" left-content">
+								<div class="content-top">
+									<h1>成就所当绵历岁时且由众手全羣共喻成就所当绵历岁时</h1>
+									<p>成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻</p>
+								</div>
+
+								<div class="lz clearfix">
+									<div class="mui-pull-left imgaa"><img src="img/mogu.png" /></div>
+									<div class="mui-pull-left">
+										<p>给您添蘑菇了</p>
+										<p>源自方圆十里</p>
+									</div>
+								</div>
+							</div>
+							<img src="img/guangguao.png" alt="" class="right-img" />
+						</div>
+						<div class="fenxiang clearfix tp-padding">
+							<span class="fl">
+								分享到
+							</span>
+							<ul class="clearfix fl">
+								<li class="pengyouquan"><img src="img/pengyouquan.png" /></li>
+								<li class="weixinhaoyou"><img src="img/weixin.png" /></li>
+							</ul>
+						</div>
+					</li>-->
+					<div class="xianshi" style="padding: 10px 5px;">正在加载...</div>  
+				</ul>
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/geren-ziliao.js"></script>
+		
+		<script type="text/javascript">
+			var user_id;
+			mui.init({
+				swipeBack:true, //开启右滑关闭功能  
+			})
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();  //获得自己
+			    user_id = self.user_id;//获得参数
+			    if(user_id){
+			    	upUserInfo(user_id); //更新信息
+			    	getUserNewsList(user_id); //更新文章
+			    }
+			});
+			
+		
+			
+		</script>
+	</body>
+
+</html>

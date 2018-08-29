@@ -1,0 +1,35 @@
+header {
+	background-color: #5FB5FE!important;
+}
+header div.search{
+	position: relative;
+	margin-top: 8px;
+	width: 86%;
+}
+header div.search img {
+	position: absolute;
+	top: 7px;
+	left: 7px;
+	width: 13px;
+	height: 13px;
+}
+header div.search input {
+	margin: 0;
+	height: 28px;
+	font-size: 11px;
+	padding-left: 28px;
+	color: #999999;
+	border-radius: 5px;
+	border: none;
+}
+
+header div.quxiao{
+	height: 100%;
+}
+header div.quxiao a{
+	display: inline-block;
+	color: #282828;
+	font-size: 14px;
+	margin: 14px 0;
+	font-weight: 600;
+}

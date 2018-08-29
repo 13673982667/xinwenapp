@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+		<style>
+			#clipArea {
+				margin: 0 auto;
+				height: 300px;
+				background: #f2f2f2;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height:64px!important; padding-top: 20px; background-color: #fff;">
+			<a class="mui-action-back  mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">编辑封面</h1>
+		</header>
+		<img src="" alt="" />
+		<div class="mui-content" style="height:100%; overflow-y: auto;    padding-top: 64px;">
+			<div id="clipArea"></div>
+			<input type="file" id="file"  accept="image/*" capture="camera" >
+			
+			<button id="clipBtn">截取</button>
+			<button id="xuanze">选择</button>
+			<div id="view"></div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/base/iscroll.zoom.js"></script>
+		<script type="text/javascript" src="js/base/hammer.js"></script>
+		<script src="js/base/jq.photosClips.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var body_width = $('body').width();
+			var body_height = $('body').height();
+			$('#clipArea').photoClip({
+				width: body_width * 0.8125,
+				height: body_height * 0.8125,
+				file: "#file",
+				view: "#hit",
+				ok: "#clipBtn",
+				loadStart: function (e) {
+					console.log("照片读取中"+JSON.stringify(e));
+				},
+				loadComplete: function (e) {
+					console.log("照片读取完成"+JSON.stringify(e));
+				},
+				clipFinish: function (e) {
+					console.log('dataURL'+JSON.stringify(e));
+				}
+			})
+			$('#xuanze').on('tap',function(){
+				
+			});
+	
+		
+		</script>
+	</body>
+
+</html>

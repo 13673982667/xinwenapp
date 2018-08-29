@@ -1,0 +1,78 @@
+header{
+	box-shadow: none!important;
+	background-color: #fff!important;
+}
+header h1{
+	font-weight: 600!important;
+}
+ul.mui-table-view{
+	margin-top: 0!important;
+}
+ul.mui-table-view li img{
+	height: 52px;
+	width: 52px;
+}
+ul.mui-table-view li{
+	position: relative;
+	
+}
+ul.mui-table-view li span{
+	position: absolute;
+	left: 85px;
+	top: 28px;
+	font-size: 18px;
+}
+
+ul.mui-table-view li ul li{
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 0;
+}
+ul.mui-table-view li ul li div.touxiang img{
+	height: 50px;
+	width: 50px;
+}
+ul.mui-table-view li ul li div.nickname{
+	width: 59%;
+}
+ul.mui-table-view li ul li h3{
+	color: #5C6D98;
+	font-size: 16px;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+ul.mui-table-view li ul li div.nickname p.desc{
+	font-size: 14px;
+	height: 40px;
+	line-height: 18px;
+	overflow: hidden;
+}
+ul.mui-table-view li ul li div.nickname p.fabu-date{
+	color: #9A9A9A;
+}
+ul.mui-table-view li ul li div.peitu img{
+	height: 65px;
+	width: 65px;
+}
+
+ul.mui-table-view li ul li:not(:last-child){
+	border-bottom: 1px solid #F7F7F7;
+}
+.mui-navigate-right:after, .mui-push-right:after {
+    content: '\e580';
+}
+.gz_is_look{
+	display: none;
+	width: 10px;
+	height: 10px;
+	/*background-color: #ff0000;*/
+	color: rgb(240,26,90);
+	position: absolute;
+	left:35px!important;
+	top: 0px!important;
+	font-size: 10px!important;
+	border-radius: 50%;
+}
+.mui-table-view-cell:after{
+	    left: 0px;
+}

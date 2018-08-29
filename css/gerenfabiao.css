@@ -1,0 +1,48 @@
+header{
+	background-color: #fff!important;
+	box-shadow: none!important;
+	-webkit-box-shadow: none!important;
+}
+
+header a.fabu {
+	display: block;
+	border: none;
+	padding: 0!important;
+	background-color: #FFED99;
+	color: #282828;
+	width: 17%;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 3px!important;
+}
+
+.mui-content div.share {
+	height: 226px;
+	background-color: #FFFFFF;
+}
+
+.mui-content div.share textarea {
+	width: 100%;
+	height: 110px;
+	color: #777777;
+	font-size: 14px;
+	padding-top: 8px;
+}
+.mui-content div.share div.add-img img{
+	height: 100px;
+	width: 100px;
+}
+.mui-content div.position{
+	height: 40px;
+	background-color: #FFF;
+	margin-top: 10px;
+	padding-top: 15px;
+}
+.mui-content div.position a.position img{
+	height: 14px;
+	width: 10px;
+	margin-right: 8px;
+}
+.mui-content div.position a.right{
+	margin-top: -5px;
+}

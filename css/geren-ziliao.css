@@ -1,0 +1,120 @@
+div.mui-content div.ziliao-cart {
+	/*background-image: url(../img/my-bg.png);*/
+	/*background-size: 100% 100%!important;*/
+	position: relative;
+	height: 221px;
+	width: 100%;
+	color: #fff;
+	text-align: center;
+	padding-top: 10px;
+	z-index: 0;
+	overflow: hidden;
+}
+.bg-blur{
+    filter: blur(10px);
+    left:-10px;
+    top:-8px;
+   	background-size: 100% 100%!important;
+    width: 105%;
+	height: 103%;
+	background: url(../img/ad-img.png) no-repeat;
+	position: absolute;
+	z-index: 1;
+}
+.bg-blur1{
+	width: 100%;
+	height: 100%;
+	left:-0px;
+    top:-0px;
+	background-color:rgba(0,0,0, 0.15);
+	position: absolute;
+	z-index: 1;
+}
+.ziliao-wrap{
+	position: relative;
+	z-index: 2;
+}
+div.mui-content div.ziliao-cart div.ziliao-wrap div.back {
+	text-align: left;
+}
+
+div.mui-content div.ziliao-cart div.ziliao-wrap div.head img {
+	display: block;
+	height: 74px;
+	width: 74px;
+	margin: 0 auto;
+}
+
+div.mui-content div.ziliao-cart div.ziliao-wrap p.nickname {
+	font-size: 18px;
+	margin: 10px 0;
+	font-weight: 600;
+}
+
+div.mui-content div.ziliao-cart div.ziliao-wrap p.bianji-num,
+div.mui-content div.ziliao-cart div.ziliao-wrap p.guanzhu-num,
+div.mui-content div.ziliao-cart div.ziliao-wrap p.fensi-num {
+	font-size: 18px;
+	margin-bottom: 3px;
+}
+
+div.mui-content div.ziliao-cart div.ziliao-wrap ul {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 24px;
+}
+
+div.mui-content div.block {
+	/*background-color: #fff;*/
+	/*z-index: 1;
+	position: relative;*/
+}
+.news_list{
+	background-color: #fff;
+	margin-bottom: 5px;
+	
+}
+
+div.mui-content div.block p.desc {
+	padding-top: 25px;
+	padding-bottom: 15px;
+	font-size: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+div.mui-content div.block p img {
+	display: block;
+	width: 100%;
+	height: 230px;
+}
+.mui-content div.fenxiang{
+	padding-top: 12px;
+	padding-bottom: 15px;
+	height: 45px;
+}
+.mui-content div.fenxiang span {
+	font-size: 14px;
+	color: #959AA0;
+	margin-right: 20px;
+	margin-top: 3px;
+}
+
+.mui-content div.fenxiang ul li {
+	float: left;
+	margin-left: 8px;
+	margin-right: 8px;
+}
+
+.mui-content div.fenxiang ul li img {
+	height: 25px;
+    width: 25px !important;
+}
+.xianshi{
+	text-align: center;
+}
+.content>ul>li {
+    background-color: #fff;
+    margin-top: 5px;
+}

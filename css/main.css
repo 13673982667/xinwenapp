@@ -1,0 +1,525 @@
+
+			#wrap {
+				padding-top: 0;
+			}
+			
+			#content {
+				overflow: auto;
+			}
+			
+			.fix {
+				margin-top:64px;
+				position: fixed;
+				width: 100%;
+				background: #f7f7f7;	
+				z-index: 2;			
+			}
+			
+			.head {
+				height: 50px;
+				/*padding-top: 32.5px;*/
+				line-height: 50px;
+				box-sizing: border-box;
+				text-align: center;
+			}
+			
+			.head a {
+				display: inline-block;
+			}
+			
+			.head h1 {
+				display: inline-block;
+				text-align: center;
+				margin-left: -21px;
+				font-size: 18px;
+				/*font-weight: bold;*/
+				height: 50px;
+				line-height: 50px;
+			}
+			
+			a.logo {
+				width: 53px;
+				height: 27px;
+				float: left;
+				margin-top: 11px;
+				background: url(../img/page/live/logo2.png) no-repeat 0px 1px;
+				background-size: 52.5px;
+				margin-left: 15px;
+			}
+			
+			a.icon-sousuo {
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				color: #F4681E;
+				float: right;
+				position: relative;
+			}
+			
+			a.icon-sousuo::before {
+				position: absolute;
+				width: 100%;
+				left: 0;
+				top: -3px;
+		    font-size: 18px;
+			}
+			/*滑动导航*/
+			
+			.sliding {
+				height: 40px;
+				background: #fff;
+				/*border-bottom: 1px solid gainsboro;*/
+				position: relative;
+			}
+			
+			.sliding ul {
+				font-size: 0;
+				box-sizing: border-box;
+			}
+			
+			.sliding a {
+				display: inline-block;
+
+				/*width: 25%;*/
+				width: 39%;
+				height: 39px;
+				line-height: 40px;
+				font-size: 16px;
+				/*font-weight: bold;*/
+				box-sizing: border-box;
+				text-align: center;
+			}
+			
+			.sliding a.on {
+				color: #5eb4ff;
+			}
+			
+			.sliding a.on:after {
+				color: #45a8fc;
+			}
+			
+			.sliding .h-line {
+				/*content: '';*/
+				/*position: absolute;*/
+				/*bottom: 0;*/
+				width: 45px;
+				display: none;
+				/*left: 0;*/
+				border-bottom: 2px solid #5eb4ff;
+				vertical-align: top;
+				height: 1px;
+				transition: all 0.4s;
+				/*z-index: 10;*/
+			}
+			
+			.content {
+				height: 100%;
+				padding-top: 90px;
+				box-sizing: border-box;
+				transition: all 0.4s;
+				overflow-y: auto;
+			}
+			
+			.content>div {
+				width: 100%;
+				height: 100%;
+				float: left;
+				overflow-y: auto;
+				/*background: #fff;*/
+			}
+			/*热门主播*/
+			
+			.hot {
+				position: relative;
+				background: #fff;
+				height: 65px;
+				/*border-bottom: 1px solid #d3d3d3;*/
+			}
+			
+			.hotIco {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: url(../img/page/project/prjicon.png) no-repeat -161px -16px;
+				background-size: 203px;
+			}
+			
+			.hot ul {
+				font-size: 0;
+			}
+			
+			.hot li {
+				height: 65px;
+				font-size: 14px;
+				/*display: inline-block;*/
+				float: left;
+				width: 20%;
+				text-align: center;
+			}
+			
+			.hot ul li a {
+				display: inline-block;
+				height: 48px;
+				width: 48px;
+				/*background: url(../img/page/live/touxiang.jpg) no-repeat 0px 0px;*/
+				/*background-size: 60px;*/
+				margin-top: 8.5px;
+			}
+			
+			.hot ul li a img {
+				height: 48px;
+				width: 48px;
+				display: none;
+				border-radius: 50%;
+			}
+			/*展示头像，暂时写死，等接收后台数据后再更改*/
+			/*.hot ul li:nth-child(2) a{
+         background: url(../img/page/live/01.jpg) no-repeat 0px 0px;
+         background-size: 100% 100%;
+      }
+      .hot ul li:nth-child(3) a{
+         background: url(../img/page/touxiang2.jpg) no-repeat 0px 0px;
+         background-size: 100% 100%;
+      }
+      .hot ul li:nth-child(4) a{
+         background: url(../img/page/tui.jpg) no-repeat 0px 0px;
+         background-size: 100% 100%;
+      }
+      .hot ul li:nth-child(5) a{
+         background: url(../img/page/set_up/liveBg.jpg) no-repeat 0px 0px;
+         background-size: 100% 100%;
+      }*/
+			/*主播列表*/
+			.live_list div:nth-child(odd){
+				padding-right: 2px;
+			}
+			.live_list div:nth-child(even){
+				padding-left: 2px;
+			}
+			.live_list{
+				padding: 0px;
+				margin-top:0 ;
+			}
+			.live_list .live_coach .coach_status{
+				top: 6px;
+				right: 6px;
+			} 
+			.load2 img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.load3 img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.live_coach {
+				/*margin-top: 4px;*/
+			}
+			/*.live_coach img{
+        width:100%;
+        height: inherit;
+        border-radius: inherit;
+      }*/
+			
+			#position li {
+				width: 5px;
+				height: 5px;
+			}
+			
+			.networking {
+				position: relative;
+				/*top: -10px;*/
+				width: 100%;
+				height: 200px;
+				background: #ffffff;
+				display: none;
+			}
+			
+			.networking2,
+			.networking3 {
+				height: 100%;
+			}
+			#content2,
+			#content3 {
+				overflow: auto;
+				height: 100%;
+				background: #fff;
+			}
+			.img {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -60px;
+				margin-left: -40px;
+				display: block;
+				width: 80px;
+				height: 80px;
+				background: url(../img/page/white.png) no-repeat 5px -250px;
+				background-size: 300px;
+			}
+			
+			.imgtext {
+				margin-top: 25px;
+			}
+			
+			.live_coach .mask1 {
+				display: block;
+				content: '';
+				position: absolute;
+				bottom: 0;
+				height: 25px;
+				background: rgba(0, 0, 0, .2);
+				width: 99%;
+				margin-bottom: 0;
+				border-radius:0 ;
+				/*border-bottom-right-radius: inherit;
+				border-bottom-left-radius: inherit;*/
+			}
+			
+			.live_coach .nickname,
+			.live_coach .watch_num {
+				bottom: 0px;
+				height: 25px;
+				line-height: 27px;
+			}
+			
+			.load,
+			.load2,
+			.load3 {
+				box-sizing: border-box;
+				padding: 20px 10px -10px 0;
+				/*background-color: #e3e3e3 !important;*/
+			}
+			
+			.foot-top {
+				height: 50px !important;
+				padding-left: 17px;
+			}
+			
+			.foot-top img {
+				margin-top: 1px;
+				width: 40px !important;
+				height: 40px !important;
+			}
+			
+			.foot-top .watch_num {
+				top: 16px;
+				font-size: 14px;
+			}
+			
+			.foot-top .name {
+				font-size: 16px;
+				margin-top: 10px;
+			}
+			
+			.top_live {
+				/*top: 70px !important;*/
+			}
+			
+			.container {
+				padding: 0 0;
+			}
+			
+			.type {
+				margin: 10px;
+				margin-bottom: 0;
+				border-top: 10px solid #f7f3f1;
+			}
+			
+			.type:first-child {
+				/*margin-top: 0;*/
+				border-top:none
+			}
+			
+			.title {
+				width: 140px;
+				text-align: left;
+			}
+			
+			.title1 {
+				text-align: left;
+			}
+			
+			.live_list div:nth-child(even) p {
+				left:10px;
+			}
+			
+			.live_coach .watch_num .td {
+				top: 3px;
+			}
+			.live_coach .watch_num{
+				top: 2px;
+			}
+			.update-bombox {
+				width: 310px;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				height: 380px;
+				margin-top: -150.5px;
+				margin-left: -155px;
+				background: white;
+				border-radius: 5px;
+				display: block;
+			}
+			
+			#update-qd {
+				color: #0f859e;
+				border-left: 1px solid #efefef;
+			}
+			
+			#update-masking {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background: rgba(0, 0, 0, 0.1);
+				display: block;
+				z-index: 2000;
+			}
+			
+			.up-img {
+				position: relative;
+				height: 70%;
+				margin-top: -18.2%;
+				margin-right: -7.5%;
+			}
+			
+			.up-img img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.update-nr {
+				box-sizing: border-box;
+				padding:0 14%;
+				padding-top: 5%;
+				font-weight: 400;
+				font-size: 15px;
+				color: #7f7f7f;
+				height: 25%;
+				width: 100%;
+				overflow-y: auto;
+			}
+			
+			.update-ensure {
+				margin-top: 7%;
+				width: 100%;
+				height: 14%;
+				font-size: 17px;
+				line-height: 40px;
+				/* margin-top: 10px; */
+				border-top: 1px solid #efefef;
+			}
+			
+			.update-qxqd {
+				display: inline-block;
+				text-align: center;
+				width: 48%;
+				line-height: 50px;
+				cursor: pointer;
+				height: 100%;
+			}
+			
+			.update-newversion {
+				text-align: center;
+				color: white;
+				position: absolute;
+				width: 55px;
+				height: 20px;
+				right: 24%;
+				top: 85%;
+				background-color: #6fb7c6;
+				border-radius: 10px;
+			}
+			.display-none{
+				display: none;
+			}
+			.display-block{
+				display: block;
+			}
+			.div-cooper{
+				display: inline-block;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left:0;
+			    transition: all 1s;
+			    background: rgba(0,0,0,0.3);
+			    z-index: 111;
+			}
+			.cooper{
+				transition: all 1s;
+			    transform: rotateY(90deg);
+				top: 50%;
+				left: 50%;
+				/*margin-left: -10.575rem;
+				margin-top: -18.75rem;
+			    width: 16rem;
+			    height: 28.5rem;
+			    width: 21.15rem;
+			    height: 37.5rem;*/
+				background: url(../img/page/cooper-yuxiu.jpg) no-repeat;
+				background-size:contain;
+			    z-index: 111;
+			    position: absolute;
+			    border-radius: 10px;
+			}
+			.coopera{
+				position: absolute;
+			    display: inline-block;
+			    background-color: #e1bb4c;
+			    color: white;
+			    left: 50%;
+			    bottom: 1.82rem;
+			    width: 5.8rem;
+			    height: 1.55rem;
+			    margin-left: -2.9rem;
+			    z-index: 112;
+			    text-align: center;
+			    line-height: 25px;
+			    border-radius: 4px;
+			}
+			.cooper-close{
+				position: absolute;
+				top: 0rem;
+				width: 20px;
+				height: 20px;
+				background: url(../img/page/cooper-close-btn.png);
+				background-size: cover;
+				z-index: 112;
+				right: 0.2rem;
+			}
+			@media only screen and (min-width: 310px){
+			    .cooper {
+			            margin-left: -7.4rem;
+					    margin-top: -13.2rem;
+					    width: 14.8rem;
+					    height: 26.4rem;
+			    }
+			}
+			@media only screen and (min-width: 350px){
+			    .cooper {
+			    	width: 19.1rem;
+			   		height: 34.0rem;
+			   		margin-left: -9.75rem;
+					margin-top: -17rem;
+			    }
+			}
+			@media only screen and (min-width: 390px){
+			    .cooper {
+			    	width: 21.15rem;
+			   		height: 37.5rem;
+			   		margin-left: -10.575rem;
+					margin-top: -18.75rem;
+			    }
+			}
+		

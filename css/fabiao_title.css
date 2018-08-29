@@ -1,0 +1,38 @@
+
+header{
+	background-color: #fff!important;
+	color:#575757!important;
+}
+header a.left,
+header a.right{
+	color: #575757;
+	font-size: 18px!important;
+	/*margin-top: 10px;*/
+	/*font-weight: bold;*/
+	line-height: 44px;
+	padding: 0px 10px!important;
+}
+header h1{
+	color: #575757!important;
+	font-size: 17px!important;
+	/*font-weight: bold!important;*/
+}
+textarea{
+	border-radius: 0px;
+	padding: 15px 12px;
+	width: 100%;
+	height: calc(100% - 64px);
+	font-size: 16px;
+	position: fixed;
+	/*top:64px!important;*/
+	bottom: 0!important;
+}
+body{
+	background-color: #fff;
+}
+.mui-content{
+	background-color: #fff;
+	padding-bottom: 0px; 
+}
+
+

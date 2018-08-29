@@ -1,0 +1,251 @@
+.mui-table-view{
+	     position: inherit; 
+}
+
+
+/*mui 属性重写*/
+
+
+
+.public-img-div{
+	padding-bottom: 56%;width: 100%; position: relative;
+}
+
+.public-img{
+	width: 100%;height: 100%;position:absolute; top: 0;left: 0;
+}
+
+
+
+
+.mui-content div.my-cart {
+	width: 100%;
+	height: 221px;
+	position: relative;
+	overflow-x: hidden;
+}
+.bg-blur{
+
+	/*-webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);*/
+    filter: blur(9px);  
+    filter:alpha(Opacity=80);
+    left:-3%;
+    /*border: 1px solid #ff0000;*/
+    width: 106%;
+	height: 230px;
+	background: url(../img/ad-logo.png) no-repeat;
+/*	background-color:rgba(141, 141, 141, 0.35);*/
+	background-color:rgba(0,0,0, 0.65);
+	position: absolute;
+	background-size: 150% 150%!important;
+	z-index: -1;
+}
+.bg-blur1{
+	 width: 106%;
+	height: 230px;
+	background-color:rgba(0,0,0, 0.15);
+	position: absolute;
+	z-index: -1;
+}
+.mui-content div.my-cart div.set {
+	position: absolute;
+	right: 20px;
+	padding-top: 25px;
+	padding-bottom: 13px;
+}
+
+.mui-content div.my-cart div.set span img {
+	height: 20px;
+	width: 20px;
+}
+
+.mui-content .my-cart div.head img {
+	width: 77px;
+	height: 77px;
+	border-radius: 50%;
+}
+
+.mui-content .my-cart div.head {
+	margin-top: 0px;
+	padding-top: 60px ;
+}
+
+.mui-content .my-cart div.my-nickname {
+	padding-left: 12px;
+}
+
+.mui-content .my-cart div.my-nickname p.nickname {
+	font-size: 18px;
+	color: #fff;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	font-weight: 600;
+}
+
+.mui-content .my-cart div.my-nickname p.my-qianming {
+	font-size: 12px;
+	color: #fff;
+}
+
+.mui-content .my-cart div.right img {
+	height: 20px;
+	width: 15px;
+	margin-top: 27px;
+}
+.mui-content .my-cart .edit ul{
+	display: flex;
+	justify-content: space-around;
+}
+.mui-content .my-cart .edit {
+	padding-top: 27px;
+}
+
+.mui-content .my-cart .edit li div.bianji-num,
+.mui-content .my-cart .edit li div.guanzhu-num,
+.mui-content .my-cart .edit li div.fensi-num {
+	font-size: 17px;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 8px;
+}
+
+.mui-content .my-cart .edit li a div {
+	font-size: 13px;
+	color: #fff;
+}
+
+.mui-content div.wenzhang {
+	background-color: #fff;
+	padding-top: 16px;
+	/*margin-top: 10px;*/
+	padding-bottom: 12px;
+	/*border-bottom: 1px solid #E3E3E3;*/
+	
+}
+.mui-content div.wenzhang ul{
+	/*width: 40%;*/
+	margin: 0 auto;
+}
+.mui-content div.wenzhang ul li img {
+	display: block;
+	margin: 0 auto;
+}
+
+.mui-content div.wenzhang ul li div {
+	color: #C7C7C7;
+	font-size: 13px;
+	margin-top: 10px;
+}
+
+.mui-content div.all {
+	padding-top: 9px;
+	padding-bottom: 16px;
+	background-color: #fff;
+}
+.mui-content div.all div.head {
+
+	font-size: 16px;
+	color: #333333;
+	margin-bottom: 15px;
+	font-weight: 600;
+}
+
+.mui-content div.all div.head span{
+	padding: 0 7px 9px 7px;
+	margin-right: 13px;
+	text-align: center;
+}
+
+.mui-content div.all div.content {
+	padding-top:3px;
+	background-color:#efeff4;
+	color: #454545;
+	font-size: 17px;
+}
+.mui-content div.all div.content p{
+	/*display: flex;*/
+	/*padding:15px 0px 15px 10px;
+	font-size: 18px;
+	overflow: hidden;
+    text-overflow: ellipsis;*/
+    /*white-space: nowrap;*/
+    /*font-weight: normal;
+    vertical-align: baseline;*/
+}
+
+.all-img img {
+	width: 100%;
+	/*height: 180px;*/
+}
+
+.quanbu-active {
+	font-weight: 600;
+	color: #4BA1F9;
+	border-bottom: 2px solid #4BA1F9;
+}
+
+.content{
+	background-color: #efeff4;
+}
+.content>ul{
+	background-color: #efeff4;
+}
+.content>ul>li {
+	background-color: #fff ;
+	margin-top: 5px;
+}
+
+.content-li{
+	padding:0px;
+}
+.content-li:after{
+	    height: 0px;
+}
+.edit-caozuo{
+	background: #fff;
+	color:#ccc!important;
+	align-items: center;
+	font-size: 45px!important;
+}
+.font-delete{
+	font-size: 16px!important;
+}
+
+.mui-content div.fenxiang>ul>li>img {
+	height: 25px;
+    width: 25px !important;
+	display: block;
+}
+.fenxiang>ul>li {
+    float: left;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.mui-content div.fenxiang {
+	padding-left: 4%;
+    height: 45px;
+    background-color: #fff!important;
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.fenxiang>ul{
+	background-color: #fff!important;
+}
+.mui-content div.fenxiang span {
+    font-size: 14px;
+    color: #959AA0;
+    margin-right: 20px;
+}
+.shezhi{
+	padding: 0px 40px;
+	display: flex;
+	justify-content: space-around;
+}
+.shezhi>li{
+	
+	/*width: 33%;*/
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/my-bianji.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+		
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-top:20px;height: 64px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的粉丝</h1>
+		</header>
+		<div class="mui-content" style="padding-top:64px;height:100%;overflow-y: auto;">
+			<div class="bianji-list tp-padding" >
+				<ul class="clearfix" >
+					<!--<li>
+						<img src="img/index-head.png" class="head fl" />
+						<div class="fl desc">
+							<h3 class="nickname">四四</h3>
+							<p class="qianming">发现更美的自己</p>
+						</div>
+						<span class="fr weiguanzhu">关注</span>
+					</li>-->
+					
+						<!--<div  id='refreshContainer' class="cache"></div>-->
+						<div class="cache"></div>
+				</ul>
+			</div>
+			
+		</div>
+		<script src="js/xinwen.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/castapp.js"></script>
+		<script src="js/jquery-1.12.2.min.js"></script>
+		<script src="js/api/my-fensi.js"></script>
+		<script type="text/javascript">
+		var user_id;
+		ca.init()
+		mui.init({
+			swipeBack:true, //开启右滑关闭功能  
+		});
+		
+		
+		// 设置系统状态栏样式为深色前景色样式
+		mui.plusReady(function(){
+			plus.navigator.setStatusBarStyle('dark'); 
+			var self = plus.webview.currentWebview();  //获得自己
+			user_id = self.user_id;//获得参数
+			getFansInfo(user_id);
+			if(user_id == localStorage.getItem('userId')){
+				$('.mui-title').html('我的粉丝');
+			}else{
+				getUserInfo(user_id);
+			}
+		});
+		
+		//获取用户信息
+			function getUserInfo(user_id){
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/is_User?user_id='+user_id,
+					dataType:"json",
+					success:function(res){
+						if(res.code == 1){
+							$('.mui-title').html(res.data['user_name']+'的粉丝');
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="register.css" rel="stylesheet" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height: 64px; padding-top: 20px;">
+		    <!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+		    <h1 class="mui-title">注册</h1>
+		    <a class="mui-pull-right" id="lg">已有账号,去登录</a>
+		</header>
+		<div class="mui-content" style="padding-top: 64px;">
+		    <div class="top">
+		    	<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<input type="text" id="phone" name="phone" placeholder="请输入您的手机号" />
+					</li>
+					<li class="mui-table-view-cell">
+						<input type="text" name="code" id="yanzheng" placeholder="请输入验证码" / style="width：80%">	|
+						<span class="yanzheng_btn">发送验证码</span>
+					</li>
+					<li class="mui-table-view-cell">
+						<input type="text" id="password1" name="password" placeholder="请设置登录密码" />
+					</li>
+					<li class="mui-table-view-cell">
+						<input type="text" id="password2" name="repassword" placeholder="请确认密码" />
+					</li>
+				</ul>
+		    </div>
+		   <button  type="submit" class="public-g-btn btn-n">立即注册</button>
+		   <div class="foot">
+		   	<img src="../img/bl.png">
+		   </div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/castapp.js"></script>
+		<script src="../js/jquery-2.1.0.js"></script>
+		<script src="self.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var back;
+			mui.plusReady(function(){
+				// 设置状态栏背景颜色
+//				ws=plus.webview.currentWebview();
+				plus.navigator.setStatusBarStyle('dark');
+				
+				back = mui.back;
+				mui.back=function () { 
+				
+				}
+			})
+		</script>
+	</body>
+
+</html>

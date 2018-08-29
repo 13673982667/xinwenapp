@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/fabiao_title.css"/>
+		<link rel="stylesheet" href="css/nav-tab.css" />
+
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon  mui-pull-left left fabiao-back">取消</a>
+			<a class="mui-icon mui-pull-right right fabiao-ok" id="onsubmit">完成</a>
+			<h1 class="mui-title">添加链接</h1>
+		</header>
+		
+		<div class="mui-content">
+		    <textarea id="title" maxlength="5000" rows="" cols="" placeholder="请填写链接地址"></textarea>
+		</div>
+
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<!--<script src="js/api/fabiao_title.js"></script>-->
+		<script type="text/javascript">
+			mui.init()
+			var classname;
+			
+			$("#title").focus();
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();
+			    classname = self.class;//获得参数
+				plus.webview.currentWebview().setStyle({
+				    softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+				});
+			});
+			
+			$('.fabiao-back').on('tap',function(){
+				mui.back();
+//			var btnArray = ['取消','放弃'];
+//				mui.confirm(' ','放弃编辑？',btnArray,function(e){
+//					if(e.index==0){ 			 	 	
+//					}else{
+//						mui.back();
+//					}
+//				});
+			});
+			//完成
+			$('.fabiao-ok').on('tap',function(){
+				//获取参数
+				var title = $('#title').val();
+				if(title.length == 0){
+					mui.alert(" ",'内容不能为空');
+					return;
+				}
+				//是否有http
+				
+				//检查地址 是否合法
+				plus.nativeUI.showWaiting();  //显示等待框
+//				checkurl(title);
+				getUrlTitle(title);
+			});
+			//获取链接标题
+			function getUrlTitle(url){
+				var data = {
+					url:url
+				};
+//				alert(url);
+				$.ajax({
+					type:"get",
+					datatype:'json',
+					url:xinwen.url+'/getUrlTitle',
+					timeout:3000,
+					data:data,
+					success:function(msg){
+//						alert(JSON.stringify(msg));
+						plus.nativeUI.closeWaiting(); //关闭等待框
+//						if(msg.code == 1){ 
+//							
+//						}else{
+////							mui.toast('链接地址不对');
+//						}
+						//先通知
+						var target = plus.webview.getWebviewById('fabiao.html')//mui的底部导航的界面id 就是url	
+						mui.fire(target, 'fabiao-url-back', {
+							'news_url':url, //自定义事件参数
+							'classname':classname | '',
+							'title' : msg.data || '',
+						});	
+						mui.back();
+					},
+					error:function(msg){
+						plus.nativeUI.closeWaiting(); //关闭等待框
+						var target = plus.webview.getWebviewById('fabiao.html')//mui的底部导航的界面id 就是url	
+						mui.fire(target, 'fabiao-url-back', {
+							'news_url':url, //自定义事件参数
+							'classname':classname | '',
+							'title' : msg.data || '',
+						});	
+
+//						mui.toast('错误');
+						mui.back();
+					}
+				});
+			}
+			//检查地址 是否合法
+//			function checkurl(url){
+//				var data = {
+//					url:url
+//				};
+//				$.ajax({
+//					type:"get",
+//					datatype:'json',
+//					url:xinwen.url+'/checkurl',
+//					data:data,
+//					success:function(msg){
+//						plus.nativeUI.closeWaiting(); //关闭等待框
+//						if(msg.code == 1){ 
+//							//先通知
+//							var target = plus.webview.getWebviewById('fabiao.html')//mui的底部导航的界面id 就是url	
+//							mui.fire(target, 'fabiao-url-back', {
+//								'news_url':url, //自定义事件参数
+//								'classname':classname,
+//							});	
+//							mui.back();
+//						}else{
+//							mui.toast('链接地址不对');
+//						}
+//					}
+//				});
+//			}
+			//
+			function urlhttp(url){
+				var re = /^http/;
+				return re.test(url);
+			}
+		</script>
+	</body>
+
+</html>

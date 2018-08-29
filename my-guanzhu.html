@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/my-guanzhu.css" />
+					<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+							<link rel="stylesheet" type="text/css" href="css/nav-tab.css"/>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav index-search">
+			<div class="search">
+				<img src="img/icon-search.png" />
+				<input type="text" placeholder="搜索用户和文章">
+			</div>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active">
+				<span class="iconfont icon-31"></span>
+				<span class="mui-tab-label">已关注</span>
+			</a>
+
+			<a class="mui-tab-item">
+				<span class="iconfont icon-quanzi"></span>
+				<span class="mui-tab-label">圈子</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="plus">
+					<img src="img/jia.png"/>
+				</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="iconfont icon-cc-bell-o"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="">
+				<span class="iconfont icon-custom-user"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+
+		<div class="mui-content">
+			<div class="fellow tp-padding">
+				<div class="fellow-wrap clearfix">
+					<div class="fl">
+						<span>
+							我的已关注
+						</span>
+						<img src="img/yellow-bar.png" class="yellow-bar display-block margin-0" />
+					</div>
+					<img src="img/xia-hei-sanjiao.png" alt="这是已关注图片" class="fellow fr" />
+				</div>
+			</div>
+			<div class="guanzhu-desc tp-padding">
+				<div class="wode-guanzhu">
+					<h3>我的已关注</h3>
+					<span class="guanzhu-active">所有人</span><span>我已关注的</span>
+				</div>
+				<div class="tianjia-guanzhu">
+					<h3>添加更多已关注</h3>
+					<span>所有人</span><span>我已关注的</span>
+				</div>
+			</div>
+			<div class="banner">
+				<img src="img/index1.png" />
+			</div>
+			<div class="person tp-padding clearfix">
+				<img src="img/index-head.png" class="fl"/>
+				<span class="nickname fl">你是我心内的一首歌</span>
+				<span class="cancle fr"><img src="img/cancle.png"/></span>
+			</div>
+			<div class="news tp-padding">
+				<h1>时政热点：触扶贫“纪律红线” ....</h1>
+				<p>日前，中央电视台报道，经中央纪委和河北省纪委走访调研、专项检查和巡视巡察，发现河北省张家...</p>
+			</div>
+			<div class="news-png tp-padding">
+				<img src="img/index2.png" />
+			</div>
+
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script type="text/javascript">
+				var mask = mui.createMask();
+				mask.show();
+				var masks = document.querySelector(".mui-backdrop");
+				var guanzhu = document.querySelector(".guanzhu-desc");
+				masks.onclick = function(){
+					guanzhu.classList.add("display-none")
+					mask.close();
+				}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

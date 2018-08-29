@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/my-bianji.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav-tab.css"/>
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-top:20px;height:64px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的关注</h1>
+		</header>
+		<div class="mui-content" style="padding-top:64px; height:100%;overflow-y: auto;">
+			<div class="bianji-list tp-padding">
+				<ul class="clearfix content-ul">
+					<!--<li>
+						<img src="img/index-head.png" class="head fl" />
+						<div class="fl desc">
+							<h3 class="nickname">四四</h3>
+							<p class="qianming">发现更美的自己</p>
+						</div>
+						<span class="fr">已关注</span>
+					</li>-->
+					
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script type="text/javascript">
+			var user_id;
+			mui.init({
+				swipeBack:true //开启右滑关闭功能  
+			})
+			
+			// 设置系统状态栏样式为深色前景色样式
+			mui.plusReady(function(){
+				plus.navigator.setStatusBarStyle('dark'); 
+				var self = plus.webview.currentWebview();  //获得自己
+				user_id = self.user_id;//获得参数
+				if(user_id == localStorage.getItem('userId')){
+					$('.mui-title').html('我的关注');
+				}else{
+					getUserInfo(user_id);
+				}
+				getCollectionsList(user_id);
+			});
+			
+			//获取我的关注列表
+			function getCollectionsList(user_id){
+				if(!user_id){
+					return ;
+				}
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/getCollectionsList?user_id='+user_id,
+					dataType:"json",
+					success:function(res){
+						if(res.code == 1){
+							for(var v in res.data){
+								var str = $('<li>'+
+									'<img src="'+res.data[v]['headimgurl']+'" class="head fl" />'+
+									'<div class="fl desc">'+
+										'<h3 class="nickname">'+res.data[v]['ban_name']+'</h3>'+
+										'<p class="qianming">'+res.data[v]['jianjie']+'</p>'+
+									'</div>'+
+//									'<span class="fr">已关注</span>'+
+								'</li>');
+								$('.content-ul').append(str);
+//								str.attr('alt',res.data[v]['id']).on('tap',function(e){
+////									alert($(this).attr('alt'));
+//									user_info($(this).attr('alt'));
+//								});
+							}
+						}else if(res.code == 10){//没有数据了
+							mui.toast('没有关注过别人哦！');
+						}
+					}
+				});
+			}
+			//获取用户信息
+			function getUserInfo(user_id){
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/is_User?user_id='+user_id,
+					dataType:"json",
+					success:function(res){
+						if(res.code == 1){
+							$('.mui-title').html(res.data['user_name']+'的关注');
+						}
+					}
+				});
+			}
+		
+
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/fabiao_title.css"/>
+		<link rel="stylesheet" href="css/nav-tab.css" />
+
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon  mui-pull-left left fabiao-back">取消</a>
+			<a class="mui-icon mui-pull-right right fabiao-ok" id="onsubmit">完成</a>
+			<h1 class="mui-title">修改标题</h1>
+		</header>
+		
+		<div class="mui-content">
+		    <textarea id="title" maxlength="50" rows="" cols="" placeholder="不超过50字"></textarea>
+		</div>
+
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/api/fabiao_title.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			//获取上个页面传的参数
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();  //获得自己
+				var content = self.value;//获得参数
+				if(content != ''){
+					$('#title').val(content);
+				}
+			});
+		</script>
+	</body>
+
+</html>

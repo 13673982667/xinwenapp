@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/mui.indexedlist.css"/>
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/fabiao_title.css"/>
+		<link rel="stylesheet" href="css/nav-tab.css" />
+		
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon  mui-pull-left left mui-action-back">取消</a>
+			<a class="mui-icon mui-pull-right right fabiao-ok" id="done">完成</a>
+			<h1 class="mui-title">添加会员</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div id='list' class="mui-indexed-list">
+				<div class="mui-indexed-list-search mui-input-row mui-search">
+					<input type="search" class="mui-input-clear mui-indexed-list-search-input" placeholder="搜索粉丝">
+				</div>
+				<div class="mui-indexed-list-bar">
+					<a>其他</a>
+					<a>A</a>
+					<a>B</a>
+					<a>C</a>
+					<a>D</a>
+					<a>E</a>
+					<a>F</a>
+					<a>G</a>
+					<a>H</a>
+					<a>I</a>
+					<a>J</a>
+					<a>K</a>
+					<a>L</a>
+					<a>M</a>
+					<a>N</a>
+					<a>O</a>
+					<a>P</a>
+					<a>Q</a>
+					<a>R</a>
+					<a>S</a>
+					<a>T</a>
+					<a>U</a>
+					<a>V</a>
+					<a>W</a>
+					<a>X</a>
+					<a>Y</a>
+					<a>Z</a>
+				</div>
+				<div class="mui-indexed-list-alert"></div>
+				<div class="mui-indexed-list-inner">
+					<div class="mui-indexed-list-empty-alert">没有数据</div>
+					<ul class="mui-table-view">
+						<li data-group="其他" class="mui-table-view-divider mui-indexed-list-group qita">其他</li>
+						
+						<!--<li data-group="A" class="mui-table-view-divider mui-indexed-list-group">A</li>
+						<li data-value="AKU" data-tags="AKeSu" class="mui-table-view-cell mui-indexed-list-item mui-checkbox mui-left">
+							<input type="checkbox" />阿克苏机场</li>-->
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/mui.indexedlist.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/huiyuan-list.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			mui.ready(function() {
+				var header = document.querySelector('header.mui-bar');
+				var list = document.getElementById('list');
+				var done = document.getElementById('done');
+				//calc hieght
+				list.style.height = (document.body.offsetHeight - header.offsetHeight) + 'px';
+				//create
+				window.indexedList = new mui.IndexedList(list);
+				//done event
+				done.addEventListener('tap', function() {
+					var checkboxArray = [].slice.call(list.querySelectorAll('input[type="checkbox"]'));
+					var checkedValues = [];
+					var checkstr = '';
+					checkboxArray.forEach(function(box) {
+						if (box.checked) {
+							console.log(box.value);
+							checkedValues.push(box.value);
+							checkstr += ','+box.value;
+						}
+					});
+					if (checkedValues.length > 0) {
+						console.log(checkedValues);
+//						mui.alert('你选择了: ' + checkedValues);
+						tianjiahuiyuan(checkstr);
+					} else {
+						mui.toast('你没选择任何会员');
+					}
+				}, false);
+				mui('.mui-indexed-list-inner').on('change', 'input', function() {
+					var count = list.querySelectorAll('input[type="checkbox"]:checked').length;
+					var value = count ? "完成(" + count + ")" : "完成";
+					done.innerHTML = value;
+					if (count) {
+						if (done.classList.contains("mui-disabled")) {
+							done.classList.remove("mui-disabled");
+						}
+					} else {
+						if (!done.classList.contains("mui-disabled")) {
+							done.classList.add("mui-disabled");
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>

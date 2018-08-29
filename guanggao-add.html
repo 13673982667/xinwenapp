@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+	</head>
+	<style>
+		#clipArea {
+			margin: 0 auto;
+			height: calc( 88% + 50px );
+			background: #f2f2f2;
+			width:100%;
+		}
+		body{
+			background-color: #fff;
+		}
+		
+		.mui-content{
+			background-color: #fff;
+		}
+		.button{
+			font-size: 18px;
+			width: 94%;
+			height: 50px;
+			margin-left: 3%;
+			margin-top: 30px;
+		}
+		.img-content>li>a>img{
+			height: 170px!important;
+			margin-top: 15px;
+		}
+		.mui-table-view:after,.mui-table-view:before {
+		    height: 0px;
+		}
+		.bianji{
+			/*border: 1px solid #ff0000;*/
+			height: 100%;
+			position: fixed;
+			width: 100%;
+			top: 0;
+			z-index: 12;
+			background-color: #fff;
+			overflow: hidden;
+		}
+			div.ad-logo {
+				height: 12vh;
+				position:fixed;
+				bottom: 0px;
+				z-index: 1px;
+			}
+			
+			div.ad-img img,
+			div.ad-logo img {
+
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			.titleedit{
+				position: absolute;
+				z-index: 1;
+				width: 100%;
+				/*border: 1px solid #ff0000;*/
+			}
+			.bianjituichu{
+				position: relative;
+				left: 15px;
+				top: 15px;
+				background-color: rgba(0, 0, 0, .3);
+				 color: #fff;
+			    padding: 5px 7px;
+				border-radius: 5px;
+			}
+			.wancheng{
+				position: absolute;
+				right: 15px;
+				top: 15px;
+				background-color: rgba(0, 0, 0, .3);
+				 color: #fff;
+			    padding: 5px 7px;
+				border-radius: 5px;
+			}
+			.address{
+				font-size: 4px;
+				position: absolute;
+				width: 100%;
+				/*background: rgba(1,1,1,.1);*/
+				top: 25px;
+			}
+			.ggurl{
+				font-size: 4px;
+				position: absolute;
+				width: 100%;
+				/*background: rgba(1,1,1,.1);*/
+				top: 87%;
+				text-align: center;
+				padding-left: 14px;
+				left:0;
+			}
+		
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="height:64px!important; padding-top: 20px; background-color: #fff;">
+			<a class="mui-action-back  mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">广告设置</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view mui-grid-view img-content">
+		        <!--<li class="mui-table-view-cell mui-media mui-col-xs-4">
+		            <a href="#">
+		            	<div class="address">'+res.str_address+'</div>
+		                <img class="mui-media-object" src="img/lunbo.png">
+		            </a>
+		        </li>-->
+		    </ul>    
+		    <div class="d-button">
+		    	<button type="button" class="mui-btn mui-btn-danger button">添加图片</button>
+		    </div>
+		    <!--编辑-->
+			<div class="bianji " style="display:none;">
+				<div class="titleedit">
+					<div class=" mui-icon mui-icon-checkmarkempty mui-pull-left wancheng" style="font-size:50px;margin-top:28px; line-height: 30px;"></div>
+					<!--<a class="mui-icon mui-icon-left-nav mui-pull-left bianjituichu"></a>-->
+					<!--<a class="mui-icon  mui-pull-right mui-icon-checkmarkempty wancheng" style="font-size: 50px; margin-top: -12px;"></a>-->
+					<div class=" mui-icon mui-icon-arrowleft ui-pull-left bianjituichu" style="font-size:30px; margin-top:28px; line-height: 30px;"></div>
+					
+				</div>
+				<div class="mui-content" style="height: 100%;">
+						<div style="height: 100%; padding: 0px;">
+							<div id="clipArea"></div>
+							<input type="file" id="file"  style="display:none;">
+					
+							<button id="clipBtn" style="display:none;">截取</button>
+							
+							<div id="view"></div>
+							<!--<div class="xiaoguo">效果</div>
+							<div id="jiancai" style="">
+								<img src="" alt="" />
+							</div>-->
+							<div class="ad-logo">
+								<img src="img/ad-logo.png" />
+							</div>
+							
+						</div>
+				    
+				</div>
+				<button id="xuanze">更换封面</button>
+			</div>
+			<!--编辑 end-->
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/base/iscroll.zoom.js"></script>
+		<script type="text/javascript" src="js/base/hammer.js"></script>
+		<script src="js/base/jq.photosClips.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/guanggao-add.js"></script>
+		<script type="text/javascript">
+			var content,guanggaoleng,moderator_id,_self;
+//			alert(guanggaoleng);
+			mui.init({
+//				swipeBack:true, //启用右滑关闭功能
+				
+				gestureConfig:{
+					longtap: true, //默认为false  
+//					hold:true,//默认为false，不监听
+				}
+			});
+			ca.init();
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarStyle( "dark" ); //深色前景
+				_self = plus.webview.currentWebview();  //获得自己
+				content = JSON.parse(_self.content);//获得参数
+				moderator_id = content.id; //id
+				getguanggaolist(moderator_id); //获取列表
+		    });
+		    
+		    //刷新页面
+		    window.addEventListener('refresh',function(){
+		    	$('.img-content').html('');
+		    	getguanggaolist(moderator_id); //获取列表
+		    });
+		     
+		</script>
+	</body>
+</html>

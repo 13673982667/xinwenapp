@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/fabiao_title.css"/>
+		<link rel="stylesheet" href="css/nav-tab.css" />
+		<style type="text/css">
+			#editor-container {
+				-webkit-user-select:text;
+			  height: calc(100% - 42px);
+			}
+			.ql-editor{
+						-webkit-user-select:text;
+			}
+			.ql-picker.ql-header {
+			    width: 80px!important;
+			}
+			.ql-toolbar.ql-snow .ql-formats {
+			    margin-right: 10px!important;
+			}
+			/*.ql-toolbar.ql-snow {
+			    position: fixed;
+			    width: 100%;
+			    bottom: 0;
+			    border: 0px!important;
+			}*/
+		
+		</style>
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon  mui-pull-left left fabiao-back">取消</a>
+			<a class="mui-icon mui-pull-right right fabiao-ok" id="onsubmit">完成</a>
+			<h1 class="mui-title">编辑文字</h1>
+		</header>
+		
+		<!--<div class="mui-content">
+		    <textarea id="title" maxlength="5000" rows="" cols="" placeholder="不超过5000字"></textarea>
+		</div>-->
+
+		<div class="mui-content" style="height:100%;overflow-y: auto;">
+		    <textarea id="title" maxlength="" rows="" cols="" placeholder="不超过50字"></textarea>
+		    <!--<div id="editor-container" >-->
+			</div>	
+		</div>
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<!--<script src="js/api/fabiao_title.js"></script>-->
+		
+		<!-- Main Quill library -->
+		<link rel="stylesheet" href="js/kindeditor/quill.snow.css" />
+		<script src="js/kindeditor/quill.js"></script>
+			
+		<script type="text/javascript">
+			var _quill;
+			mui.init()
+			$("#title").focus();
+			mui.plusReady(function(){
+				plus.webview.currentWebview().setStyle({
+				    softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+				});
+				
+				var self = plus.webview.currentWebview();  //获得自己
+			    var content = self.content;//获得参数
+//			    console.log(content);
+			    
+				$('#title').html(content);//设置获取到的内容
+			});
+			
+//			
+			$('.fabiao-back').on('tap',function(){
+				mui.back();
+//			var btnArray = ['取消','放弃'];
+//				mui.confirm(' ','放弃编辑？',btnArray,function(e){
+//					if(e.index==0){ 			 	 	
+//					}else{
+//						mui.back();
+//					}
+//				});
+			});
+			$('.fabiao-ok').on('tap',function(){
+//				var length = _quill.getLength();
+//				var content = _quill.container.firstChild.innerHTML ; //获取编辑器的内容
+//				console.log(JSON.stringify(content));
+				var length = $('#title').val().length;
+				var content = $('#title').val(); //获取编辑器的内容
+//				//获取参数
+//				var title = $('#title').val();
+				if(length < 1){
+					mui.alert(" ",'内容不能为空');
+					return;
+				}
+				//先通知
+				var target = plus.webview.getWebviewById('fabiao.html')//mui的底部导航的界面id 就是url	
+				mui.fire(target, 'fabiao-content-back', {
+					'content':content //自定义事件参数
+				});	
+				mui.back();
+			});
+
+
+
+			//编辑器初始化
+//			window.onload = function(){
+//				var toolbarOptions = [
+//								  ['bold', 'italic', 'underline'],        // toggled buttons
+//								  [{ 'direction': 'rtl' }],      
+//								  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+//								  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+//
+//								  [{ 'align': [] }],
+//								
+//
+//								];
+//				_quill = new Quill('#editor-container',{modules: {
+//				    toolbar: toolbarOptions
+//				  },
+//				  theme: 'snow'});
+////				_quill.blur(); //取消焦点
+//				_quill.focus();//获得
+////				  console.log(Quill);
+//			}
+	
+
+
+
+
+
+
+
+
+
+
+		</script>
+	</body>
+
+</html>

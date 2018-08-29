@@ -1,0 +1,121 @@
+.mui-bar-nav {
+	box-shadow: none;
+}
+
+header {
+	background-color: #fff!important;
+}
+
+header h1 {
+	font-weight: 600!important;
+}
+
+div.mui-content div.search-fensi {
+	background-color: #fff;
+	padding-top: 20px;
+	padding-bottom: 6px;
+}
+
+div.mui-content div.search-fensi div.input-search {
+	position: relative;
+	border-bottom: 1px solid #E7E7E7;
+	padding: 0 10px;
+}
+
+div.mui-content div.search-fensi div.input-search input {
+	text-align: left;
+	padding-left: 24px;
+	background-color: #fff;
+	font-size: 14px;
+	margin: 0;
+	color: #D3D3D3;
+}
+
+div.mui-content div.search-fensi div.input-search img {
+	position: absolute;
+	top: 8px;
+	height: 18px;
+	width: 18px;
+}
+
+div.mui-content div.bianji {
+	height: 36px;
+}
+
+div.mui-content div.bianji span {
+	display: inline-block;
+	margin-top: 15px;
+	color: #A4A4A4;
+}
+
+div.mui-content div.bianji-list {
+	background-color: #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+div.mui-content div.bianji-list li {
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+}
+
+div.mui-content div.bianji-list li:after {
+	content: " ";
+	display: block;
+	clear: both;
+	visibility: hidden;
+}
+
+div.mui-content div.bianji-list li img.head {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+div.mui-content div.bianji-list li span.shanchu {
+	background-color: #489FFF;
+	color: #fff;
+}
+
+div.mui-content div.bianji-list li div.desc {
+	display: inline-block;
+	width: 54%;
+	height: 100%;
+}
+
+div.mui-content div.bianji-list li div.desc h3 {
+	font-size: 16px;
+	margin-top: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	position: relative;
+}
+.pad-left{
+	padding-left: 30px;
+	
+}
+
+div.mui-content div.bianji-list li div.desc p {
+	font-size: 14px;
+	color: #ACACAC;
+	margin-top: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.delete_fs{
+	padding: 5px 10px;
+    margin: 10px 10px 0 0;
+    border-radius: 4px;
+    min-height: 28px!important;
+    color: #fff;
+    font-size: 16px;
+    width: 70px;
+    text-align: center;
+	background-color: #479EFF;
+    border: 1px solid #479EFF;
+}

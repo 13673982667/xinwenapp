@@ -1,0 +1,52 @@
+div.cart .person{
+	position: relative;
+}
+
+div.shanchu{
+	position: absolute;
+	top: 30px;
+	background-image: url(../img/shanchukuang.png);
+	background-size: 100% 100%;
+	width: 100%;
+	height: 242px;
+	overflow-y: auto;
+	z-index: 1000;
+	padding: 30px 10px 20px 10px;
+}
+div.shanchu div.liyou span.liyou{
+	font-size: 12px;
+	color: #737373;
+}
+div.shanchu div.liyou span.xingqu{
+	margin-top: -8px;
+	background-color: #FFD100;
+	color: #282828;
+	font-size: 12px;
+	padding:10px 25px;
+	border-radius: 15px;
+}
+div.shanchu div.laiyuan{
+	height: 30px;
+	line-height: 30px;
+	font-size: 12px;
+	border: 1px solid #E2E2E2;
+	border-radius: 4px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	color: #282828;
+	font-weight: 600;
+}
+div.shanchu ul li{
+	float: left;
+	border: 1px solid #E2E2E2;
+	border-radius: 4px;
+	width: 48%;
+	padding: 10px 0;
+	text-align: center;
+	color: #282828;
+	font-weight: 600;
+}
+.quanzi-active{
+	color: #282828!important;
+}

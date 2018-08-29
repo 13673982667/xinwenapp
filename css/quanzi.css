@@ -1,0 +1,108 @@
+header{
+	background-color: #5FB5FE!important;
+}
+.mui-content div.tebie{
+	background-color: #fff;
+}
+.mui-content div.tebie div.wrap{
+	height: 35px;
+	width: 55%;
+	margin: 0 auto;
+	
+}
+.mui-content div.tebie div.wrap>div{
+
+}
+.mui-content div.tebie div.wrap div>div{
+	margin-top: 7px;
+	height: 35px;
+	display: inline-block;
+	margin-right: 5px;
+}
+.mui-content div.tebie div.wrap div div span{
+	font-size: 16px;
+	color: #666;
+	font-weight: bold;
+}
+/*三角样式*/
+.mui-content div.tebie div.wrap div img{
+	display: inline-block;
+	width: 8px;
+	height: 5px;
+	margin-top: 10px;
+}
+/*黄线样式*/
+.mui-content div.tebie div.wrap div div img.yellow-bar{
+	display: block;
+	height: 2px;
+	width: 30px;
+	margin: 4px auto 0 auto;
+}
+
+.mui-content div.cart{
+	background-color: #fff;
+	margin: 5px 0 10px 0;
+	padding: 15px 3% 10px 3%;
+}
+
+.mui-content div.person .touxiang  {
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+
+.mui-content div.person span.nickname {
+	font-size: 14px;
+	color: #737373;
+	margin-bottom: 5px;
+}
+.mui-content div.person p{
+	font-size: 11px;
+	color: #999999;
+}
+.mui-content div.person span.cancle img {
+	height: 11px;
+	width: 11px;
+}
+.mui-content div.news{
+	margin-top: 16px;
+	margin-bottom: 13px;
+	background-color: #fff;
+}
+.mui-content div.news h1 {
+	font-family: "微软雅黑";
+	font-weight: 600;
+	font-size: 16px;
+	color: #222222;
+	margin-bottom: 11px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mui-content div.news p {
+	color: #454545;
+	font-size: 14px;
+	line-height: 18px;
+	max-height: 36px;
+	overflow: hidden;
+}
+
+.mui-content div.news-png img {
+	width: 100%;
+	height: 228px;
+}
+
+.mui-content div.cart div.img img{
+	width: 100%;
+	height: 183px;
+}
+.mui-content div.cart div.dianzan{
+	text-align: center;
+	margin-top: 8px;
+}
+.mui-content div.cart div.dianzan span.zanshu{
+	margin-left: 4px;
+	font-size: 12px;
+}

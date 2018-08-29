@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/mui.css" />
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=XtU9VaqHKIIaawmtQlzPY64PFvtVYoFg"></script>
+		<link rel="stylesheet" href="css/style_page.css" />
+		<script type="text/javascript" src="js/jquery-1.12.2.min.js" ></script>
+		<script type="text/javascript" src="js/mui.min.js" ></script>
+		<script type="text/javascript" src="js/castapp.js" ></script>
+	</head>
+	<style type="text/css">
+		.mui-input-clear{
+			margin-bottom: 0px !important;
+		}
+		.mui-search:before{
+		   position: absolute !important;
+		   top: 73% !important;	
+		}
+		#r_result{
+			width:100%;
+			height:252px;
+			border:1px dashed #E2E2E2;
+			display: block;
+		}
+		#back{
+			color:#FFFFFF !important;
+			font-size: 33px;
+			margin-left: 0px;
+		}
+		#header{
+			width: 100%;
+			height: 20%;
+			background: #FFBB40;
+			/*border-bottom: none !important;*/
+			display: inline-block;
+		}
+		#header h1{
+			font-family: "微软雅黑";
+			font-weight: 700;
+			text-align: center;
+			color: #FFFFFF;
+		}
+		.mui-title{
+		
+			display: inline-block;
+			line-height: 40px !important;
+		}
+		.mui-input-row{
+			margin-top: 45px;
+		}
+	</style>
+	<body>
+	<header class="mui-bar mui-bar-nav" style="height: 64px; padding-top: 20px;">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+	    <h1 class="mui-title">附近地址</h1>
+	</header> 
+		<div class="mui-input-row mui-search" style="margin-top: 65px;">
+		    <input type="search" class="mui-input-clear" placeholder="请输入要搜索的内容" value="">
+		</div>
+		<div style="width:100%;height:320px;display: block;" id="map"></div>
+		<div class="map_list" id="r_result"></div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	mui.init();
+	ca.init();
+//		mui.alert("如果没有您所在的地点，请选择离您最近的地点","提示","我知道了",null,"div");
+	var lng1 = localStorage.getItem("mylng");
+	var lat1 = localStorage.getItem("mylat");
+	var map = new BMap.Map("map");
+	var mPoint = new BMap.Point(lng1, lat1);
+	map.centerAndZoom(mPoint, 19);
+	map.enableScrollWheelZoom(); //启用滚轮缩放
+	var mOption = {
+		poiRadius: 500, //半径为1000米内的POI,默认100米
+		numPois: 7  //列举出50个POI,默认10个
+	}
+	var myGeo = new BMap.Geocoder(); //创建地址解析实例
+	displayPOI();
+
+	function displayPOI(){
+//		map.addOverlay(new BMap.Circle(mPoint, 500)); //添加一个圆形覆盖物
+		myGeo.getLocation(mPoint,
+			function mCallback(rs) {
+				var allPois = rs.surroundingPois; //获取全部POI（该点半径为100米内有6个POI点）
+				var str = '';
+				for(i = 0; i < allPois.length; ++i) {
+					str += '<p class="ress">' +
+						'<span>' + allPois[i].address + '(' + allPois[i].title + ')</span>' +
+						'</p>';
+					var myIcon = new BMap.Icon("imgs/ditu.png",new BMap.Size(35,35));
+					var market = new BMap.Marker((allPois[i].point),{icon:myIcon});
+					map.addOverlay(market);
+				}
+
+				$(".map_list").html(str);
+
+			}, mOption);
+	}
+	$(".map_list").on("click", ".ress", function() {
+		function plusReady(){
+			var arr = ['home.html'];
+			ca.sendNotice(arr, 'addressmap',{});
+		}
+		if(window.plus){
+			plusReady();
+		}else{
+			document.addEventListener("plusready",plusReady,false);
+		}
+
+		var maps = $(this)[0].outerText;
+		localStorage.setItem("tex", maps);
+		ca.closeCurrentInterface();
+	})
+    $(document).keyup(function(event){ 
+    	mylng=localStorage.getItem("mylng");
+    	mylat=localStorage.getItem("mylat");
+    	
+    	var map = new BMap.Map("map");            // 创建Map实例
+		map.centerAndZoom(new BMap.Point(mylng,mylat), 11);
+		var local = new BMap.LocalSearch(map, {
+			renderOptions: {map: map, panel: "r_result"}
+		});
+		var cait=$(".mui-input-clear").val();
+		
+		local.search(cait);
+    });
+    $("#r_result").on("tap","li",function(){
+    	var maps=$(this).children().children().children()[3].innerText;
+    	var arr = ['home.html'];
+		ca.sendNotice(arr, 'addressmap', {});
+		localStorage.setItem("tex", maps);
+		ca.closeCurrentInterface();
+    })
+	$(".black").click(function() {
+		ca.closeCurrentInterface();
+	})
+</script>

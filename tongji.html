@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/tongji.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav1 "></header>
+		<div class="mui-content mui-scroll-wrapper" id="pullrefresh">
+			<div class="mui-scroll">
+				<div class="tongji-cart tp-padding">
+					<div class="bg-blur"></div>
+					<div class="bg-blur1"></div>
+					<div class="bar clearfix">
+						<span class="mui-action-back mui-icon mui-icon-arrowleft fl">
+			    	    	
+			    	    </span>
+						<!--<h1 class="fl">访问统计</h1>-->
+						<span class="mui-icon mui-icon-search fr">
+			    
+			    	    </span>
+					</div>
+					<div class="head">
+						<img src="img/my-head.png" class="headimgurl"/>
+						<p class="nickname">昵称</p>
+							
+						</span>
+					</div>
+					<div class="tongji-data clearfix">
+						<ul>
+							<li>
+								<div class="wenzhang-num">0</div>
+								<span>文章数</span>
+							</li>
+							<li><img src="img/shugang.png" /></li>
+							<li>
+								<div class="fangwen-num fangwen">0</div>
+								<span>总访问</span>
+							</li>
+							<li><img src="img/shugang.png" /></li>
+							<li>
+								<div class="fenxiang-num fenxiang">0</div>
+								<span>被分享</span>
+							</li>
+						</ul>
+					</div>
+	
+				</div>
+				<div class="tongji-desc ">
+					<ul class="clearfix ul-content">
+						<!--<li>
+							<img src="img/fangwen-desc.png" class="fl" />
+							<div class="fl">
+								<h3>老兵美食广场</h3>
+								<p><i class="iconfont icon-yanjing"></i><span class="fangwen-num">0</span><i class="iconfont icon-fenxiang"></i><span class="fenxiang-num">0</span></p>
+							</div>
+						</li>-->
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script type="text/javascript">
+			var _jiazai;
+			var pagearr = {
+				'size' : 10, //默认条数
+				'page' : 1 , //默认第一页
+			}
+			mui.init({
+				swipeBack:true, //开启右滑关闭功能  
+				pullRefresh: {
+					container: '#pullrefresh',
+//					down: {
+////						style:'circle',  //这个好像有问题
+//						callback: pulldownRefresh
+//					},
+					up: {
+						height:50,//可选.默认50.触发上拉加载拖动距离
+						auto:true,
+						contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+      					contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: pullupRefresh
+					}
+				}
+			});
+			var count = 0;
+			function pullupRefresh() {
+				setTimeout(function() {
+					getUserNewsInfo()
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(_jiazai); //参数为true代表没有更多数据了。
+				}, 1500);
+			}
+
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh() {
+				setTimeout(function() {
+
+					mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+
+				}, 1500);
+			}
+
+			
+			//更新用户数据
+			function getTongjiUserInfo(){
+				var user_id = localStorage.getItem('userId');
+				if(!user_id){
+					return mui.toast('信息非法，请重新登陆！');	
+				}
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/userInfo?user_id='+user_id,
+					dataType:"json",
+					success:function(res){
+						if(res.code == 1){
+							$('.wenzhang-num').html(res.data['NewsNum'] || 0);
+							$('.fangwen').html(res.data['NewsDianjiliangCount'] || 0);
+							$('.fenxiang').html(res.data['NewsShareCount'] || 0);
+							$('.nickname').html(res.data['user_name']);
+							$('.headimgurl').attr('src',res.data['headimgurl']);
+							$('.bg-blur').css({"background":"url("+res.data['headimgurl']+")"});
+							
+						}
+					}
+				});
+			}
+
+			//获取用户文章
+			function getUserNewsInfo(){
+				
+				var user_id = localStorage.getItem('userId');
+				if(!user_id){
+					return mui.toast('信息非法，请重新登陆！');	
+				}
+				pagearr.isdelete = '-1';
+				pagearr.is_look = true;
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/getUserNewsList?user_id='+user_id,
+					dataType:"json",
+					data : pagearr,
+					success:function(res){
+//						console.log(JSON.stringify(res));
+						if(res.code == 1){
+							pagearr.page ++;
+							for(var k in res.data){
+								var str = $(viewobj.li(res.data[k]));
+								str.attr('alt',JSON.stringify(res.data[k])).on('tap',function(){//点击文章
+//									e.stopPropagation()
+									opentongji(this);
+								});
+//								str.find('.fangwentongji').attr('alt',JSON.stringify(res.data[k])).on('tap',function(e){//点击统计
+//									
+//								});
+								
+								$('.ul-content').append(str);
+							}
+							_jiazai = false;
+						}else{
+							_jiazai = true;
+						}
+					}
+				});
+			}
+			mui.plusReady(function(){
+				getTongjiUserInfo();//更新用户数据
+			})
+			
+			var viewobj = {
+				li:function(e){
+					return '<li>'+
+							'<img src="'+(e['cover'] || e['headimgurl'] || 'img/moren.jpg')+'" class="fl" />'+
+							'<div class="fl">'+
+								'<h3>'+e['title']+'</h3>'+
+								'<p class="fangwentongji">'+
+									'<i class="iconfont icon-yanjing"></i><span class="fangwen-num">'+e['dianjiliang']+'</span>'+
+									'<i class="iconfont icon-fenxiang"></i><span class="fenxiang-num">'+e['share']+'</span>'+
+								'</p>'+
+							'</div>'+
+						'</li>';
+				}
+			};
+			function opentongji(obj){
+				var news = $(obj).attr('alt');
+				if(!news){
+					return mui.toast('错误，刷新试试');
+				}
+				mui.openWindow({
+					url:'youshuikanguo.html',
+					id:'youshuikanguo.html',
+					extras:{
+						news:news
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

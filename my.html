@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/mui.imageviewer.css" />
+		<link rel="stylesheet" href="css/mui.poppicker.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/my.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav-tab.css"/>
+		
+	</head>
+	<style type="text/css">
+		.simi{
+			color:#d4d4d4;
+			font-weight:400;
+			font-size: 12px;
+			border: 1px solid #dee0e4;
+			border-radius: 3px;
+			padding: 2px 4px;
+			margin:0px 5px;
+		}
+		html{
+			border:0;
+			height: auto;
+			overflow: inherit;
+		}
+ 		body{
+ 			border:0;
+			/*height: 100%;*/
+ 		}
+ 		.sousuo{
+ 			position: fixed;
+ 			top: 164px;
+ 			z-index: 6;
+ 		}
+ 		.sousuo>input{
+ 			background-color: rgba(0,0,0,0.1);
+ 			border: 0px;
+ 		}
+ 		
+	</style>
+	<body>
+		<!--<div class="sousuo"><input type="text" /></div>-->
+		<header class="mui-bar mui-bar-nav1 "></header>
+		<div class="mui-content  mui-scroll-wrapper"  id="pullrefresh" style="height:100%;border:0; ">
+			<div class="mui-scroll">
+				<div class="my-cart">
+					<div class="bg-blur"></div>
+					<div class="bg-blur1"></div>
+					<div class="tp-padding wrap">
+						<div class="set clearfix">
+							<span class="fr">
+								<!--<a><img src="img/search.png" /></a>-->	
+							</span>
+						</div>
+						<div class="head clearfix">
+							<div class="myhead fl my_info">
+								<img class="headimgurl" src="img/my-head.png"  data-preview-src="" data-preview-group="1" />
+							</div>
+							<div class="my_info">
+								<div class="my-nickname fl">
+									<a>
+										<p class="nickname">别问我是谁</p>
+									</a>
+									<a>
+										<p class="my-qianming">点击设置个性签名，让更多人认识你</p>
+									</a>
+								</div>
+								<div class="right fr">
+									<!--<a ><img src="img/right-arrow.png" /></a>-->
+								</div>
+							</div>
+						</div>
+						<div class="edit clearfix">
+							<ul>
+								<li id="my_edit" class="my_edit" style="display:none;">
+									<div class="bianji-num">0</div>
+									<a class="display-block">
+										<div>编辑</div>
+									</a>
+								</li>
+								<li  class="my_edit" style="display:none;"><img src="img/shugang.png" /></li>
+								<li id="Collections">
+									<div class="guanzhu-num">0</div>
+									<a href="javascript:;" class="display-block" >
+										<div>已关注</div>
+									</a>
+								</li>
+								<li><img src="img/shugang.png" /></li>
+								<li id="Fans">
+									<div class="fensi-num">0</div>
+									<a href="javascript:;" class="display-block">
+										<div>粉丝</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				
+				<div class="wenzhang tp-padding ">
+					<ul class="shezhi" style="">
+						<li class="qiyeshezhi" style="display: none;">
+							<div><img src="img/qiye-guanggao.png" style="width: 22px; height: 22px;" alt="文章" /></div>
+							<div>单位设置</div>
+						</li>
+						<li class="guanggaoshezhi" style="display: none;">
+							<div><img src="img/wenzhang-guanggao.png"  alt="文章" /></div>
+							<div>广告设置</div>
+						</li>
+						<li class="fangwentongji" >
+							<div><img src="img/tongji.png" alt="访问"/></div>
+							<div>访问统计</div>
+						</li>
+					</ul>
+				</div>
+				<div class="all ">
+					<div class="wrap">
+						<div class="head clearfix tp-padding">
+							<a><span class="fl my-all quanbu-active">我的文章</span>
+								<span class="fl dis" style="display:none;">全部文章</span>
+							</a>
+							<a></a>
+						</div>
+						<div class="content content-all">
+							<ul class="mui-table-view ">
+								<!--<li class="mui-table-view-cell content-li" >
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn  edit-caozuo ">
+											<span class="mui-icon mui-icon-trash"></span>
+										</a>
+									</div>
+									<div class="mui-slider-handle">
+										<p><span class="simi">私密</span>
+											我在微信有了自己的专栏！
+										</p>
+										<div class="all-img public-img-div">
+											<img src="img/all-img.png" class="public-img"  data-preview-src="" data-preview-group="1" />
+										</div>
+									</div>
+									<div class="fenxiang clearfix ">
+										<span class="fl">
+											分享到
+										</span>
+										<ul class="clearfix fl">
+											<li><img src="img/pengyouquan.png" /></li>
+											<li><img src="img/weixin.png" /></li>
+											<li><img src="img/qq.png" /></li>
+											<li><img src="img/qq-kongjian.png" /></li>
+										</ul>
+									</div>
+								</li>
+								-->
+								<!--<li class=" mui-media">
+									<div class=' top-con tp-padding'>
+								
+										<div class=" left-content">
+											<div class="content-top">
+												<h1>成就所当绵历岁时且由众手全羣共喻成就所当绵历岁时</h1>
+												<p>成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻</p>
+											</div>
+
+											<div class="lz clearfix">
+												<div class="mui-pull-left imgaa"><img src="img/mogu.png" /></div>
+												<div class="mui-pull-left">
+													<p>给您添蘑菇了</p>
+													<p>源自方圆十里</p>
+												</div>
+											</div>
+										</div>
+										<img src="img/guangguao.png" alt="" class="right-img" />
+									</div>
+									<div class="fenxiang clearfix tp-padding">
+										<span class="fl">
+											分享到
+										</span>
+										<ul class="clearfix fl">
+											<li class="pengyouquan"><img src="img/pengyouquan.png" /></li>
+											<li class="weixinhaoyou"><img src="img/weixin.png" /></li>
+										</ul>
+									</div>
+								</li>-->
+							</ul>
+						</div>
+						<div class="content content-delete" style="display:none;">
+							<ul class="mui-table-view ">
+								<!--<li class="mui-table-view-cell content-li" >
+									<div class="mui-slider-right mui-disabled">
+										<a class="mui-btn  edit-caozuo ">
+											<span class="mui-icon mui-icon-trash"></span>
+										</a>
+									</div>
+									<div class="mui-slider-handle">
+										<p>
+											删除的文章！
+										</p>
+										<div class="all-img">
+											<img src="img/all-img.png"  data-preview-src="" data-preview-group="1" />
+										</div>
+									</div>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<nav class="mui-bar mui-bar-tab" style="position: fixed; margin-bottom: -50px; z-index: 9999;">
+			<a class="mui-tab-item" id="fabiao.html">
+				<span class="plus" style="margin-bottom: -45px;">
+					<img src="img/jia.png" />
+				</span>
+			</a>
+		</nav>
+		
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/castapp.js"></script>
+		<script src="js/mui.zoom.js"></script>
+		<script src="js/mui.previewimage.js"></script>
+		
+		<script src="js/xinwen.js"></script>
+		<!--<script src="js/api/login.js"></script>-->
+		<script src="js/api/my.js"></script>
+			
+		<script type="text/javascript">
+			var shuaxin_index,_self,_jiazai;
+			updateUserInfo();	//更新用户信息
+			getUserNewsList(1); //加载一次回收站
+			mui.init({
+				gestureConfig:{
+					longtap: true, //默认为false  
+//					hold:true,//默认为false，不监听
+				},
+				pullRefresh: {
+					container: '#pullrefresh',
+					down: {
+						style:'circle', 
+						callback: function(){
+							var self = this;
+							setTimeout(function() {
+								mui('#pullrefresh').pullRefresh().refresh(true)//重置上拉加载
+								mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+								updateUserInfo();	
+								//初始化数据
+								RefreshInfo();
+							}, 1000)
+						}
+					},
+					up: {
+						auto:true,
+						contentrefresh: '正在加载...',
+						callback: function(){
+							_self = this;
+							setTimeout(function(){
+								if(shuaxin_index == 1){
+									getUserNewsList(1);
+								}else{
+									getUserNewsList();
+								}
+								setTimeout(function(){
+									mui('#pullrefresh').pullRefresh().endPullupToRefresh(_jiazai);
+								},500);
+//								shuaxin_fn();
+							},1000);
+						}
+					}
+				}
+			});
+			
+			var count = 0;
+			ca.init();
+//			ca.imageViewer();//图片浏览
+//			alert(mui.os.version)
+
+
+			mui.plusReady(function(){
+				// 设置系统状态栏样式为浅色色前景色样式
+				plus.navigator.setStatusBarStyle('light'); 
+				
+			});
+			
+			//上个液面关闭  更新用户信息 
+			window.addEventListener('my-info-back',function(e){
+				updateUserInfo();
+			});
+			//刷新
+			var RefreshInfo = function(event){
+				pagearrnews.page = pagearrdelnews.page = 1;
+				$('.content-delete ul').html('');
+				$('.content-all ul').html('');
+				getUserNewsList();
+				getUserNewsList(1);
+				updateUserInfo();	//更新用户信息
+			}
+			//接收登录成功的通知
+			window.addEventListener('RefreshInfo',RefreshInfo)
+			
+			
+		</script>
+	</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

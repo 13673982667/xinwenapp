@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/my-bianji.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+	</head>
+	<style>
+		.zhezhao{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		.zhiding{
+			    color: #c6898e;
+			    border-radius: 3px;
+			    border: 1px solid #d0513f;
+			    padding: 2px 1px 1px 1px;
+			    /*line-height: 14px;*/
+			    font-size: 10px!important;
+			    left: 0px;
+			    /* margin-right: 4px; */
+			   margin-top: 0px;
+			    position: absolute;
+			    /* line-height: 11px; */
+			    /*text-indent: initial;*/
+		}
+		.nickname{
+			/*padding-left: 30px;*/
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-top: 20px; background: #fff;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的编辑</h1>
+		</header>
+		<div class="mui-content" style="padding-top: 64px; background: #fff;height:100%;overflow-y: auto;">
+			<div class="search-fensi tp-padding">
+				<div class="input-search clearfix">
+					<img src="img/icon-search.png" class="fl sousuo_fensi" />
+					<input type="search" placeholder="搜索粉丝" class="fl" />
+					<div class="zhezhao"></div>
+				</div>
+			</div>
+			<div class="bianji tp-padding">
+				<span>
+					编辑
+				</span>
+			</div>
+			<div class="bianji-list tp-padding">
+				<ul class="clearfix content-ul">
+					<li>
+						<img src="img/index-head.png" class="head fl" />
+						<div class="fl desc">
+							<h3 class="nickname"><span class="zhiding">置顶</span>四四</h3>
+							<p class="qianming">发现更美的自己</p>
+						</div>
+						<span class="fr delete_fs">删除</span>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/my-bianji.js"></script>
+		<script type="text/javascript">
+			var moderator_id;
+			mui.init({
+				swipeBack:true, //开启右滑关闭功能  
+				gestureConfig:{
+					longtap:true,//默认为false，不监听
+				}
+			})
+			ca.init();
+			// 设置系统状态栏样式为深色前景色样式
+			mui.plusReady(function(){
+				plus.navigator.setStatusBarStyle('dark'); 
+			});
+			//搜索粉丝
+			$('.zhezhao').on('tap',function(){
+				mui.openWindow({
+					url:'huiyuan-list.html',
+					id:'huiyuan-list.html'
+				});
+			});
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

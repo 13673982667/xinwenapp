@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="login.css" rel="stylesheet" />
+		<style type="text/css">
+			input:: -webkit-input-placeholder{
+				color: #999999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar-nav" style=" padding-top: 15px;">
+			<a class="mui-pull-right title" id="zhuce" style="color:#999999;font-size: 18px; background: #edf6fb">注册</a>
+		</header>
+		<div class="mui-content" style="background: #edf6fb;">
+			<div class="logo">
+				<img src="../img/shililogo.png" style="width: 138px;height: 178px;"/> 
+			</div>
+			<div>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<input type="text" name="phone" id="phone" placeholder="请输入您的手机号"/>
+					</li>
+					<li class="mui-table-view-cell">
+						<input type="text" name="password" id="password" placeholder="请输入您的密码" />	|
+					</li>
+				</ul>
+			</div>
+			<div>
+				<ul style="padding: 0;">
+					<li>
+					   <button  type="submit" class="public-g-btn btn-n lg">账号登录</button>
+					</li>
+					<li>
+						<button type="button" class="public-g-btn btn-n wx"><img src="../img/wx.png" class="wl"/>&nbsp;&nbsp;&nbsp;微信登录</button>
+					</li>
+				</ul>
+			</div>
+			<div class="foot"><img src="../img/bl.png" /></div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/castapp.js" ></script>
+		<script src="../js/jquery-2.1.0.js"></script>
+		<script src="../js/xinwen.js"></script>
+		<script src="login.js"></script>
+		<script src="../js/api/login1.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			ca.init();
+			mui.plusReady(function(){
+				// 设置状态栏背景颜色
+//				ws=plus.webview.currentWebview();
+				plus.navigator.setStatusBarStyle('dark');
+				
+				back = mui.back;
+				mui.back=function () { 
+				
+				}
+			})
+		</script>
+	</body>
+
+</html>

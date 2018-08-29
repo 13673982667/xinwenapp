@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/fabiao.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+	</head>
+	<style>
+		
+
+
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!--<a class="mui-icon mui-pull-left left">返回</a>-->
+			<a class="mui-icon mui-pull-right right" id="onsubmit">完成</a>
+			<h1 class="mui-title">编辑</h1>
+		</header>
+		<div style="position: fixed">
+			<div style="position: relative;"></div>
+		</div>
+		<div class="mui-content" style="height:100%;overflow-y: auto;">
+			<!--<div class="set public-img-div" style="overflow: hidden;">
+				<div class="public-img-div" id="jian">
+					<div class="bg-blur news_cover"></div>
+					<img src="img/fengmian-bg.png"/ class="fengmian-bg news_cover public-img" id="news_cover">
+				</div>
+				<div class="set-title clearfix">
+					<span class="fl" >点击设置标题</span>
+				</div>
+				<div class="addcover news_cover" >
+					添加封面
+				</div>
+				<div class="edit" >
+					编辑封面
+				</div>
+				<input type="hidden" id="news_title" value="" />
+			</div>-->
+			<div class="set-title clearfix" id="add_title"  style="padding:15px 15px 10px 15px; color: #999; text-align: center; width: 100%; margin: 15px 0px; font-size: 19px; line-height: 24px; " >点击设置标题</div>
+			<!--<div class="tianjia tp-margin" style="height: 14%;">
+				<img class="cancle" src="img/cancle.png" />
+				<div class="mui-input-row text " style="height: 100%;">
+					<div class="add_title" >点击设置标题</div>
+				</div>
+			</div>-->
+			
+			
+			<div class="tianjia tp-margin" style="">
+				<img class="cancle clear-cover" src="img/cancle.png" />
+				<div class="mui-input-row text " style="height: 100%;">
+					<div class="lianjie_img cover fl" style="display: ;"><img src="img/add-img.png" width="90" height="90"/></div>
+					<div class="news_content fl" >添加原文简介</div>
+					<!--<textarea rows="5" placeholder="添加原文简介" id="news_content"></textarea>-->
+				</div>
+			</div>
+			<div class="jiahao">
+				<img src="img/jiahao.png" />
+			</div>
+			<div class="tianjia tp-margin" style="height: 20%;">
+				<img class="cancle" src="img/cancle.png"/>
+				<div class="mui-input-row text " style=" height: 100%;">
+					<!--<div class="news_url"></div>-->
+					<!--<textarea rows="5" placeholder="添加原文链接" id="news_url"></textarea>-->
+					<!--<div class="lianjie_img fl"><img src="img/fengmian-bg.png" width="100%" height="100%"/></div>-->
+					<div id="news_url" class="fl">添加原文链接</div>
+				</div>
+			</div>
+			
+			<!-- 链接1 -->
+			<!--<div class="jiahao lianjie1">
+				<img src="img/jiahao.png" />
+			</div>-->
+			
+			<!-- 链接1 end -->
+			
+			<!-- 链接2 -->
+			<div class="jiahao lianjie2">
+				<img src="img/jiahao.png" />
+			</div>
+			
+			<!--<div class="tianjia tp-margin" style="margin-bottom: 10px; display: ;">
+				<img class="cancle" src="img/cancle.png" />
+				<div class="mui-input-row text " style=" height: 100%;">
+					<div class="cover1 fl"><img src="img/fengmian-bg.png" width="100%" height="100%"/></div>
+					<div  class="fl lianjie2_content">添加原文链接</div>
+				</div>
+			</div>-->
+			<!-- 链接2 end -->
+			<div class="add-wenzhang tp-margin">
+				<label class="fl">
+					<input type="radio" name="is_look" checked="checked" value="1" />所有人可见
+				</label>
+				<label class="fr">
+					<input type="radio" name="is_look" value="0" />仅自己可见
+				</label>
+			</div>
+		</div>
+		<!--编辑-->
+		<!--<div class="bianji " style="display:none;">
+			<header class="mui-bar mui-bar-nav" style="height:64px!important; padding-top: 20px; background-color: #fff;">
+				<a class="mui-icon mui-icon-left-nav mui-pull-left bianjituichu"></a>
+				<h1 class="mui-title">编辑封面</h1>
+			</header>
+			<div class="mui-content" style="height: 100%;">
+					<div class="" style="height: 100%;">
+						<div id="clipArea"></div>
+						<div class="mui-scroll-wrapper" style="top:305px;">
+							<div class="mui-scroll">
+								<input type="file" id="file"  style="display:none;">
+						
+								<button id="clipBtn" style="display:none;">截取</button>
+								
+								<div id="view"></div>
+								<div class="xiaoguo">效果</div>
+								<div id="jiancai" style="">
+									<img src="" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<button id="xuanze">更换封面</button>
+		</div>-->
+		<input type="file" id="file"  style="display:none;">
+		<!--编辑 end-->
+		<nav class="mui-bar mui-bar-tab" style="position: fixed; z-index: 999; margin-bottom: -50px;">
+			<a class="mui-tab-item" id="fabiao.html">
+				<span class="plus" style="margin-bottom: -45px;">
+					<img src="img/jia.png" />
+				</span>
+			</a>
+		</nav>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/castapp.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/base/iscroll.zoom.js"></script>
+		<script type="text/javascript" src="js/base/hammer.js"></script>
+		<script src="js/base/jq.photosClips1.js"></script>
+		<script type="text/javascript" src="js/api/fabiao.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				gestureConfig:{
+					longtap:true,//默认为false，不监听
+					
+				},
+				
+			})
+			ca.init()
+
+			options = {
+				 scrollY: true, //是否竖向滚动
+				 scrollX: false, //是否横向滚动
+				 startX: 0, //初始化时滚动至x
+				 startY: 0, //初始化时滚动至y
+				 indicators: true, //是否显示滚动条
+				 deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+				 bounce: true //是否启用回弹
+			}
+			mui('.mui-scroll-wrapper').scroll(options);
+			function plusReady(){
+				// 设置状态栏背景颜色
+				ws=plus.webview.currentWebview();
+				ws.addEventListener('show',function(){
+					plus.navigator.setStatusBarStyle('dark');
+				},false);
+			}
+			if(window.plus){
+				plusReady();
+			}else{
+				document.addEventListener("plusready",plusReady,false);
+			}
+			</script>
+	</body>
+
+</html>

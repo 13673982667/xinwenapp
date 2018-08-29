@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+		<style type="text/css">
+			.mui-bar-nav{
+				box-shadow: none!important;
+				background-color: #fff!important;
+			}
+			.mui-content>.mui-table-view:first-child {
+				margin-top: -1px;
+			}
+			.mui-table-view>li{
+				display: flex;
+				align-items:center;
+			}
+			.mui-table-view>li>img{
+				border-radius: 50%;
+				    width: 52px!important;
+				    max-width: 52px!important;
+    				height: 52px!important;
+			}
+			.mui-table-view-cell:after{
+				left:0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">有谁分享</h1>
+		</header>
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<!--数据列表-->
+				<ul class="mui-table-view mui-table-view-chevron">
+					<!--<li class="mui-table-view-cell mui-media">
+						<img class="mui-media-object mui-pull-left" src="img/add-img.png">
+						<div class="mui-media-body">
+							木屋
+							<p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+						</div>
+					</li>
+					-->
+					
+				</ul>
+			</div>
+		</div>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script>
+			var jiazai_,_self,news_id;
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+//					down: {
+//						style:'circle',
+//						callback: pulldownRefresh
+//					},
+					up: {
+						auto:true,
+						contentrefresh: '正在加载...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			mui.plusReady(function(){
+				plus.navigator.setStatusBarStyle('dark'); //深色前景
+				_self = plus.webview.currentWebview();  //获得自己
+				news_id = JSON.parse(_self.news).id;
+			});
+//			var count = 0;
+			function pullupRefresh() {
+				setTimeout(function() {
+					getNewsfenxiang(news_id);
+					mui('#pullrefresh').pullRefresh().endPullupToRefresh(jiazai_); //参数为true代表没有更多数据了。
+				}, 1500);
+			}
+			//get这篇文章分享的人
+			function getNewsfenxiang(news){
+				if(!news_id){
+					return mui.toast('错误，刷新试试');
+				}
+				if(jiazai_){
+					return;
+				}
+//				alert(news_id)
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/getNewsfenxiang?news_id='+news_id,
+					dataType:"json",
+//					data:{},
+					success:function(res){
+//						console.log(JSON.stringify(res));
+						if(res.code == 1){
+							for(var k in res.data){
+								var str = viewobj.li(res.data[k]);
+								$('.mui-table-view').append(str);
+							}
+							jiazai_ = true;
+						}else{
+							jiazai_ = true;
+						}
+					}
+				})
+			}
+			var viewobj = {
+				li:function(res){
+					if(!res){
+						return;
+					}
+					var str = $('<li class="mui-table-view-cell mui-media">'+
+							'<img class="mui-media-object mui-pull-left" src="'+res['headimgurl']+'">'+
+							'<div class="mui-media-body">'+
+								res['user_name']+
+							'</div>'+
+						'</li>')
+					return str;
+				}
+			}
+		</script>
+	</body>
+
+</html>

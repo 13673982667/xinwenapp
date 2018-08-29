@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/my-bianji.css" />
+		<style type="text/css">
+			ul li span{
+				background-color: #fff!important;
+				border: 1px solid #BDBDBD;
+				color: #A6A6A6!important;
+			}
+			ul li div h3{
+				color: #6E819C;
+				font-weight: 600;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="padding-top: 20px; height: 64px;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">我的粉丝</h1>
+		</header>
+		<div class="mui-content" style="overflow-y: auto; height: 100%;padding-top:64px;">
+			<div class="bianji-list tp-padding">
+				<ul class="clearfix" id="pullrefresh">
+					<script type="text/javascript">
+						
+					</script>
+					<!--<li>
+						<img src="img/index-head.png" class="head fl" />
+						<div class="fl desc">
+							<h3 class="nickname">四四</h3>
+							<p class="qianming">关注了你</p>
+							<p class="guanzhu-date">2-08</p>
+						</div>
+						
+					</li>-->
+					<div class="cache"></div>
+				</ul>
+			</div>
+		</div>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script type="text/javascript" src="js/castapp.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack:true //开启右滑关闭功能  
+			})
+			ca.init();
+
+
+			//获取信息
+			getFansInfo();
+
+			function getFansInfo(){  //获取粉丝信息
+				var user_id = localStorage.getItem('userId');
+				if(!user_id){
+					return ; 
+				}
+				$.ajax({
+					type : 'get',
+					datatype : 'json',
+//					data : pagearr,
+					data : {is_look:1},
+					url : xinwen.url+'/getNoLook?user_id='+user_id,
+					success:function(res){
+//						console.log(JSON.stringify(res))
+						if(res.code == 1){
+							for(var i=0; i<res.data.length; i++){
+
+								if(res.data[i]['headimgurl'] == ''){ //设置默认头像
+									res.data[i]['headimgurl'] = headimgurl.headimgurl;
+								}
+								var img = $('<img src="'+res.data[i]['headimgurl']+'" class="head fl" />');
+								var h3 = $('<h3 class="nickname">'+res.data[i]['user_name']+'</h3>');
+								var p1 = $('<p class="qianming">关注了你</p>');
+//								var p2 = $('<p class="guanzhu-date">'+res.data[i]['create_time']+'</p>')
+								var p2 = '';
+								var div = $('<div class="fl desc"></div>').append(h3,p1,p2);
+								var li = $("<li></li>").append(img,div);
+								$(".cache").before(li);
+							}
+							//通知首页
+							var arr = [plus.runtime.appid]; //获取nav的对象
+							ca.sendNotice(arr,'is_look',{}); //通知
+						}
+					}
+				});
+			}
+			
+	
+			
+			
+			
+			// 设置系统状态栏样式为深色前景色样式
+			mui.plusReady(function(){
+				plus.navigator.setStatusBarStyle('dark'); 
+			});
+			if(mui.os.ios){
+				
+			}
+			
+		</script>
+		<style type="text/css">
+			
+		</style>
+	</body>
+
+</html>

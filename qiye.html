@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/geren-ziliao.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav-tab.css"/>
+		
+	</head>
+	<style>
+		.qianming{
+			/*font-weight: 800;*/
+			font-size: 12px;
+			/*margin-top:50px;*/
+		}
+		.nickname{
+			margin-top: 20px!important;
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav1 "></header>
+		<div class="mui-content" >
+
+			<div class="ziliao-cart tp-padding" style="padding-top: 20px;">
+				<div class="bg-blur"></div>
+				<div class="bg-blur1"></div>
+				<div class="ziliao-wrap">
+					<div class="back">
+						<a class="mui-action-back mui-icon mui-icon-left-nav"></a>
+					</div>
+					<div class="head">
+						<img src="" style="border-radius: 50%;"/>
+					</div>
+					<p class="nickname">
+						。素心。
+					</p>
+					<p class="qianming">
+						微笑向暖 安之若素。
+					</p>
+					<!--<ul>
+						<li>
+							<p class="bianji-num">3</p><span>编辑</span></li>
+						<li>
+							<p class="guanzhu-num">57</p><span>关注</span></li>
+						<li>
+							<p class="fensi-num">2.6万</p><span>粉丝</span></li>
+					</ul>-->
+				</div>
+			</div>
+			<div class="content content-all">
+				<!--<div class="news_list">
+					<p class="desc tp-padding">梦幻库尔滨，这里才是冬天的神话世界</p>
+					<p>
+						<img src="img/kuerbin.png" />
+					</p>
+					<div class="fenxiang clearfix tp-padding">
+						<span class="fl">
+							分享到
+						</span>
+						<ul class="clearfix fl">
+							<li><img src="img/pengyouquan.png" /></li>
+							<li><img src="img/weixin.png" /></li>
+							<li><img src="img/qq.png" /></li>
+							<li><img src="img/qq-kongjian.png" /></li>
+						</ul>
+					</div>
+				</div>-->
+				<ul class="">
+					<!--<li class=" mui-media">
+						<div class=' top-con tp-padding'>
+					
+							<div class=" left-content">
+								<div class="content-top">
+									<h1>成就所当绵历岁时且由众手全羣共喻成就所当绵历岁时</h1>
+									<p>成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻</p>
+								</div>
+
+								<div class="lz clearfix">
+									<div class="mui-pull-left imgaa"><img src="img/mogu.png" /></div>
+									<div class="mui-pull-left">
+										<p>给您添蘑菇了</p>
+										<p>源自方圆十里</p>
+									</div>
+								</div>
+							</div>
+							<img src="img/guangguao.png" alt="" class="right-img" />
+						</div>
+						<div class="fenxiang clearfix tp-padding">
+							<span class="fl">
+								分享到
+							</span>
+							<ul class="clearfix fl">
+								<li class="pengyouquan"><img src="img/pengyouquan.png" /></li>
+								<li class="weixinhaoyou"><img src="img/weixin.png" /></li>
+							</ul>
+						</div>
+					</li>-->
+					<!--<div class="xianshi" style="padding: 10px 5px;">正在加载...</div>-->  
+				</ul>
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script type="text/javascript">
+			
+			var moderator_id,_jiazai;
+//			//默认分页
+			var pagearrqiye = {
+				'size' : 10, //默认条数
+				'page' : 1 , //默认第一页
+			};
+			mui.init({
+				swipeBack:true, //开启右滑关闭功能  
+//				pullRefresh: {
+//					container: '#pullrefresh',
+//					down: {
+//						style:'circle', 
+//						callback: function(){
+//							setTimeout(function() {
+//								mui('#pullrefresh').pullRefresh().endPulldownToRefresh();
+//								getQiyeInfo(moderator_id);
+//								$('.news').remove();
+//								_jiazai = false;
+//								pagearrqiye.page = 1;
+//								getQiyeNews(moderator_id);
+//								mui('#pullrefresh').pullRefresh().refresh(true)
+//							}, 1000)
+//						}
+//					},
+//					up: {
+//						auto:true,
+//						contentrefresh: '正在加载...',
+//						callback: function(){
+//							_self = this;
+//							setTimeout(function(){
+//								getQiyeNews(moderator_id);
+//								setTimeout(function(){
+//									mui('#pullrefresh').pullRefresh().endPullupToRefresh(_jiazai);
+//								},500);
+////								shuaxin_fn();
+//							},1000);
+//						}
+//					}
+//				}
+			});
+			mui.plusReady(function(){
+				var self = plus.webview.currentWebview();  //获得自己
+			    moderator_id = self.moderator_id;//获得参数
+			    
+			    if(moderator_id){
+			    	getQiyeInfo(moderator_id);
+					getQiyeNews(moderator_id);
+			    }
+			});
+//			//获取更新企业信息
+			function getQiyeInfo(moderator_id){
+				$.ajax({
+					type : 'get',
+					datatype : 'json',
+					url : xinwen.url+'/getQiyeInfo?moderator_id='+moderator_id,
+					success:function(res){
+						if(res.code == 1){
+							$('.nickname').html(res.data['ban_name']);
+							$('.head>img').attr('src',res.data['headimgurl']);
+							$('.bg-blur').css('background','url('+res.data['headimgurl']+')');
+						}
+					}
+				});
+			}
+//			//获取企业下的所有文章
+////			function getQiyeNews(moderator_id){
+////				$.ajax({
+////					type : 'get',
+////					datatype : 'json',
+////					data : pagearrqiye,
+////					url : xinwen.url+'/getQiyeNews?moderator_id='+moderator_id,
+////					success:function(res){
+////						if(res.code == 1 && res.data){
+////							pagearrqiye.page ++;
+////							for(var k in res.data){
+////								var str = viewobj.list(res.data[k]);
+////								$('.mui-scroll').append(str);
+////							}
+////							_jiazai = false;
+////						}else{
+////							_jiazai = true;
+////						}
+////					}
+////				});
+////			}
+////			var viewobj = {
+////				list : function (res){
+////					var cover = '';
+//////					if(res['cover']){
+//////						cover = '<img src="" />';
+//////					}
+////					var str = $("");
+////				
+////						var str = $('<div class="news">'+
+////						'<a><h2 class="tp-padding">'+res['title']+'</h2></a>'+
+////						'<div class="news-content public-img-div">'+
+////							'<img src="'+res['cover']+'" class="public-img" />'+
+////						'</div>'+
+////						'<div class="didian tp-padding">'+
+////							'<span class="didian">'+
+////							res['user_name']+
+////						'</span>'+
+////							'<span class="time">'+
+////							res['create_time1']+
+////						'</span>'+
+////						'</div>'+
+////					'</div>');
+////					return str;
+////				}
+////			}
+//			
+//			//更新文章
+			function getQiyeNews(moderator_id){
+
+				$.ajax({
+					type : 'get',
+					data : pagearrqiye,
+					datatype : 'json',
+					url : xinwen.url+'/getQiyeNews?moderator_id='+moderator_id,
+					success:function(res){ 
+//						console.log(JSON.stringify(res));
+						if(res.code == 1){//console.log(JSON.stringify(res));
+							pagearrqiye.page ++; //页数加1
+							for(var i=0; i<res.data.length; i++){
+//								var str = $('<div class="news_list">'+
+//									'<p class="desc tp-padding">'+res.data[i]['title']+'</p>'+
+//									'<p>'+
+//									'	<img src="'+res.data[i]['cover']+'" />'+
+//									'</p>'+
+//									'<div class="fenxiang clearfix tp-padding">'+
+//										'<span class="fl">'+
+//											'分享到'+
+//										'</span>'+
+//										fenxiangdao()+
+//									'</div>'+
+//								'</div>');
+//								$('.xianshi').before(str);
+//								str.find('.pengyouquan').attr('alt',JSON.stringify(res.data[i])).on('tap',function(e){ //分享 到微信朋友圈
+//									onfenxiang($(this).attr('alt'),'WXSceneTimeline');
+//									e.stopPropagation();  //阻止元素冒泡事件
+//								});
+//								str.find('.weixinhaoyou').attr('alt',JSON.stringify(res.data[i])).on('tap',function(e){ //分享 到微信好友
+//									onfenxiang($(this).attr('alt'),'WXSceneSession');
+//									e.stopPropagation();  //阻止元素冒泡事件
+//								});
+//								str.attr('alt',JSON.stringify(res.data[i])).on('tap',function(){ //点击跳转文章详情页面
+//									alert();
+////									news_info($(this));
+//								});
+								var str = viewobj.guanzhu(res.data[i]);
+								$('.content-all>ul').append(str);
+								_jiazai = true;
+							}
+						}else{
+							_jiazai = false;
+						}
+					}
+				});
+			}
+//			
+//			//分享到  -- 样式
+//			function fenxiangdao(){
+//				var str = '<ul class="clearfix fl">'+
+//						'<li class="pengyouquan"><img src="img/pengyouquan.png" /></li>'+
+//						'<li class="weixinhaoyou"><img src="img/weixin.png" /></li>'+
+////						'<li><img src="img/qq.png" /></li>'+
+////						'<li><img src="img/qq-kongjian.png" /></li>'+
+//						'</ul>';
+//				return str;
+//			}
+		</script>
+	</body>
+
+</html>

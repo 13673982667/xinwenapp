@@ -1,0 +1,238 @@
+{
+	"index.html": {
+		"resources": [
+			"img/cancle.png",
+			"css/nav-tab.css",
+			"img/icon-search.png",
+			"img/index-head.png",
+			"img/index2.png",
+			"css/index.css",
+			"img/index1.png",
+			"js/mui.min.js",
+			"img/jia.png",
+			"css/mui.min.css",
+			"css/reset.css",
+			"iconfont/iconfont.css",
+			"img/yellow-bar.png",
+			"img/xia-hei-sanjiao.png"
+		],
+		"refer": [
+			"quanzi.html",
+			"index2.html",
+			"my.html",
+			"xiaoxi.html",
+			"search.html",
+			"my-guanzhu.html"
+		]
+	},
+	"quanzi.html": {
+		"refer": [
+			"index.html",
+			"index2.html",
+			"tebie-quanzi.html",
+			"qita-shanchu.html"
+		],
+		"resources": [
+			"img/cancle.png",
+			"css/nav-tab.css",
+			"img/jia.png",
+			"img/index-head.png",
+			"css/mui.min.css",
+			"css/quanzi.css",
+			"img/shang-hui-sanjiao.png",
+			"img/quanzi.png",
+			"css/reset.css",
+			"img/xia-hei-sanjiao.png",
+			"img/yellow-bar.png",
+			"iconfont/iconfont.css"
+		]
+	},
+	"index2.html": {
+		"refer": [
+			"my.html",
+			"xiaoxi.html",
+			"my-guanzhu.html"
+		],
+		"resources": []
+	},
+	"my.html": {
+		"refer": [
+			"index.html",
+			"my-guanzhu.html",
+			"quanzi.html",
+			"fabiao.html",
+			"qiye.html",
+			"xiaoxi.html",
+			"guanzhu-qiye.html",
+			"my-fensi.html",
+			"wode-guanzhu.html",
+			"test.html",
+			"tongji.html",
+			"my-info.html",
+			"my-bianji.html",
+			"guanggao.html",
+			"fabiao_title.html",
+			"guanggaoshezhi.html",
+			"guanggao-add.html",
+			"my-qiye.html",
+			"news_info.html",
+			"news_info2.html",
+			"geren-ziliao.html"
+		],
+		"resources": [
+			"css/nav-tab.css",
+			"img/my-head.png",
+			"img/search.png",
+			"css/my.css",
+			"img/jia.png",
+			"img/shugang.png",
+			"css/mui.min.css",
+			"css/mui.imageviewer.css",
+			"css/mui.poppicker.css",
+			"img/wenzhang-guanggao.png",
+			"img/tongji.png",
+			"css/reset.css",
+			"iconfont/iconfont.css",
+			"img/ad-logo.png"
+		]
+	},
+	"nav-tab.html": {
+		"resources": [
+			"index.html",
+			"guanzhu.html",
+			"main.html",
+			"css/nav-tab.css",
+			"img/jia.png",
+			"css/mui.min.css",
+			"css/reset.css",
+			"iconfont/iconfont.css"
+		],
+		"refer": [
+			"index.html",
+			"my.html",
+			"quanzi.html",
+			"xiaoxi.html",
+			"index2.html",
+			"guanzhu.html",
+			"fabiao.html",
+			"main.html",
+			"login.html",
+			"qidong.html",
+			"register/register.html",
+			"login/login.html"
+		]
+	},
+	"tebie-quanzi.html": {
+		"refer": [
+			"qita-shanchu.html"
+		],
+		"resources": []
+	},
+	"qita-shanchu.html": {
+		"refer": [
+			"tebie-quanzi.html"
+		],
+		"resources": []
+	},
+	"xiaoxi.html": {
+		"refer": [
+			"xiaoxi-guanzhu.html"
+		],
+		"resources": [
+			"img/jia-guanzhu.png",
+			"css/nav-tab.css",
+			"img/jia.png",
+			"css/xiaoxi.css",
+			"img/meipian.png",
+			"css/mui.min.css",
+			"img/logoo.png",
+			"css/reset.css",
+			"fonts/mui.ttf"
+		]
+	},
+	"guanzhu.html": {
+		"refer": [
+			"nav-tab.html"
+		],
+		"resources": []
+	},
+	"fabiao.html": {
+		"refer": [
+			"fabiao_content.html",
+			"fabiao_url.html",
+			"fabiao_title.html"
+		],
+		"resources": [
+			"img/cancle.png",
+			"img/fengmian-bg.png",
+			"css/nav-tab.css",
+			"css/fabiao.css",
+			"img/jia.png",
+			"css/mui.min.css",
+			"img/jiahao.png",
+			"css/reset.css"
+		]
+	},
+	"fabiao_content.html": {
+		"resources": [
+			"js/kindeditor/quill.js"
+		]
+	},
+	"main.html": {
+		"refer": [
+			"geren-ziliao.html",
+			"news_info.html",
+			"news_info2.html"
+		],
+		"resources": [
+			"img/icon-search.png",
+			"css/nav-tab.css",
+			"css/guanzhu.css",
+			"img/lunbo.png",
+			"img/jia.png",
+			"img/guangguao.png",
+			"img/mogu.png",
+			"css/mui.min.css",
+			"img/weixin.png",
+			"img/pengyouquan.png",
+			"css/reset.css",
+			"iconfont/iconfont.css"
+		]
+	},
+	"my-info.html": {
+		"refer": [
+			"my-info-qianming.html"
+		]
+	},
+	"guanggaoshezhi.html": {
+		"refer": [
+			"addtext.html"
+		]
+	},
+	"login.html": {
+		"refer": [
+			"login.html"
+		],
+		"resources": [
+			"login.html",
+			"css/login.css",
+			"css/mui.min.css"
+		]
+	},
+	"guanggao-add.html": {
+		"refer": [
+			"guanggao.html"
+		]
+	},
+	"guanggao.html": {
+		"refer": [
+			"addguanggao_url.html",
+			"address_map.html"
+		]
+	},
+	"login/login.html": {
+		"refer": [
+			"register/register.html"
+		]
+	}
+}

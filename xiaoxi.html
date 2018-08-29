@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/xiaoxi.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+	</head>
+	<style>
+		.mui-content{
+			background-color: #fff;
+
+		}
+		body{
+			background-color: #fff;
+		}
+		.mui-table-view:after{
+			    height: 1px;
+		}
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title" style="font-size: 20px;">消息</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell ">
+					<a class="mui-navigate-right guanzhu" href="javascript:;"><img src="img/jia-guanzhu.png" style="border-radius: 50% ;"/><span style="font-size:16px;">关注<span class="gz_is_look">●</span></span></a>
+				</li>
+				<li class="mui-table-view-cell mui-active " style="background-color: #fff;">
+					<a class="" style="background-color: #fff;"><img src="img/logoo.png" style="border-radius: 50% ;" /><span style="font-size:16px;">通知</span></a>
+					<div class="mui-collapse-content" style="background-color: #fff; margin-top: 8px;">
+						<ul style="background-color: #fff;">   
+							<!--<li>
+								<div class="touxiang"><img src="img/logoo.png" style="border-radius: 50% ;" /></div>
+								<div class="nickname">
+									<h3 class="nickname">美篇</h3>
+									<p class="desc">【买一赠一倒计时30小时】美篇书，把爱送回家，点击抢购！</p>
+									<p class="fabu-date">
+										2-10
+									</p>    
+								</div>
+								<div class="peitu"><img src="img/meipian.png" /></div>
+							</li>
+							<li>
+								<div class="touxiang"><img src="img/logoo.png" style="border-radius: 50% ;" /></div>
+								<div class="nickname">
+									<h3 class="nickname">美篇</h3>
+									<p class="desc">【买一赠一倒计时30小时】美篇书，把爱送回家，点击抢购！</p>
+									<p class="fabu-date">
+										2-10
+									</p>
+								</div>
+								<div class="peitu"><img src="img/meipian.png" /></div>
+							</li>	<li>
+								<div class="touxiang"><img src="img/logoo.png" style="border-radius: 50% ;" /></div>
+								<div class="nickname">
+									<h3 class="nickname">美篇</h3>
+									<p class="desc">【买一赠一倒计时30小时】美篇书，把爱送回家，点击抢购！</p>
+									<p class="fabu-date">
+										2-10
+									</p>
+								</div>
+								<div class="peitu"><img src="img/meipian.png" /></div>
+							</li>	<li>
+								<div class="touxiang"><img src="img/logoo.png" style="border-radius: 50% ;"/></div>
+								<div class="nickname">
+									<h3 class="nickname">美篇</h3>
+									<p class="desc">【买一赠一倒计时30小时】美篇书，把爱送回家，点击抢购！</p>
+									<p class="fabu-date">
+										2-10
+									</p>
+								</div>
+								<div class="peitu"><img src="img/meipian.png" /></div>
+							</li>-->
+						</ul>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<nav class="mui-bar mui-bar-tab" style="position: fixed; margin-bottom: -50px;">
+			<a class="mui-tab-item" id="fabiao.html">
+				<span class="plus" style="margin-bottom: -45px;">
+					<img src="img/jia.png" />
+				</span>
+			</a>
+		</nav>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/castapp.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/xiaoxi.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			ca.init();
+			
+			
+			$('.guanzhu').on('tap',function(){//
+				ca.newInterface({
+					url : 'xiaoxi-guanzhu.html',
+					id : 'xiaoxi-guanzhu.html',
+				});
+				his_look();
+			});
+			is_look();
+			
+		</script>
+	</body>
+
+</html>

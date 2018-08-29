@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/fabiao_title.css"/>
+		<link rel="stylesheet" href="css/nav-tab.css" />
+
+	</head>
+
+	<body>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon  mui-pull-left left fabiao-back">取消</a>
+			<a class="mui-icon mui-pull-right right fabiao-ok" id="onsubmit">完成</a>
+			<h1 class="mui-title">修改企业简介</h1>
+		</header>
+		
+		<div class="mui-content">
+		    <textarea id="title" maxlength="30" rows="" cols="" placeholder="不超过30字"></textarea>
+		</div>
+
+		
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var self = plus.webview.currentWebview();
+				var text = self.text;
+			if(text !== ''){
+				$('#title').val(text);
+			}
+			
+			plus.webview.currentWebview().setStyle({
+			    softinputMode: "adjustResize"  // 弹出软键盘时自动改变webview的高度
+			});
+			
+			$('.fabiao-back').on('tap',function(){
+				mui.back();
+//			var btnArray = ['取消','放弃'];
+//				mui.confirm(' ','放弃编辑？',btnArray,function(e){
+//					if(e.index==0){
+//						
+//							 			 	 	
+//					}else{
+//						mui.back();
+//					}
+//				});
+			});
+			
+			
+			$('.fabiao-ok').on('tap',function(){
+				//获取参数
+				var title = $('#title').val();
+//				if(title.length == 0){
+//					mui.alert(" ",'内容不能为空');
+//					return;
+//				}
+				//先通知
+				var target = plus.webview.getWebviewById('my-qiye.html')//mui的底部导航的界面id 就是url	
+				mui.fire(target, 'qianming-back', {
+					'title':title //自定义事件参数
+				});	
+				mui.back();
+			});
+
+		</script>
+	</body>
+
+</html>

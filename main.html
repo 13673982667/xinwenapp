@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--		<link rel="stylesheet" href="css/main.css" />-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/nav-tab.css" />
+		<link rel="stylesheet" type="text/css" href="css/guanzhu.css" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 64px!important;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			
+			.fenxiang {
+				padding-left: 4%;
+			}
+			
+			.weixinhaoyou>img {
+				width: 30px;
+				height: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">选项卡切换+下拉刷新（div模式）</h1>
+		</header>-->
+		<header class="mui-bar mui-bar-nav clearfix">
+			<img src="img/logo.png" / class="logo fl">
+			<div class="search fr">
+				<img class="sousuo" src="img/icon-search.png" />
+				<input type="text" placeholder="搜索企业用户">
+			</div>
+		</header>
+		<div class="content mui-content " style="padding-top: 104px;">
+
+			<div id="slider" class="mui-slider mui-fullscreen">
+				<div id="sliderSegmentedControl" class="mui-scroll-wrapper sliding mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<div class="mui-scroll nav_title">
+						<a class="mui-control-item mui-active on" href="#item1mobile">
+							推荐
+						</a>
+						<a class="mui-control-item" href="#item2mobile">
+							关注
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1" class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<!--轮播图-->
+								<!--<div class="mui-slider mui-slider1">
+									<div class="mui-slider-group lunbotu  mui-slider-loop">
+    									<div class="mui-slider-item mui-slider-item-duplicate">
+    										<a href="#"><img src="img/lunbo.png" /></a>
+    									</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/lunbo.png"/></a>
+										</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/lunbo.png"/></a>
+										</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/lunbo.png"/></a>
+										</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/lunbo.png"/></a>
+										</div>
+										<div class="mui-slider-item">
+											<a href="#"><img src="img/lunbo.png"/></a>
+										</div>
+    									<div class="mui-slider-item mui-slider-item-duplicate">
+    										<a href="#"><img src="img/lunbo.png" /></a>
+    									</div>
+									</div>
+									<div class="mui-slider-indicator">
+										<div class="mui-indicator mui-active"></div>
+										<div class="mui-indicator"></div>
+										<div class="mui-indicator"></div>
+										<div class="mui-indicator"></div>
+										<div class="mui-indicator"></div>
+									</div>
+								</div>-->
+								<!--轮播图end-->
+								<ul class="mui-table-view zhiding_">
+									<!--<li class="mui-table-view-cell mui-media">
+										<div class=' top-con tp-padding'>
+									
+											<div class=" left-content">
+												<div class="content-top">
+													<h1 style="text-indent: 33px; "><span class="zhiding">置顶</span>成就所当绵历岁时且由众手全羣共喻成就所当绵历岁时</h1>
+													<p>成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻</p>
+												</div>
+
+												<div class="lz clearfix">
+													<div class="mui-pull-left imgaa"><img src="img/mogu.png" /></div>
+													<div class="mui-pull-left">
+														<p>给您添蘑菇了</p>
+														<p>源自方圆十里</p>
+													</div>
+												</div>
+											</div>
+											<img src="img/guangguao.png" alt="" class="right-img" />
+										</div>
+										<div class="fenxiang clearfix tp-padding">
+											<span class="fl">
+												分享到
+											</span>
+											<ul class="clearfix fl">
+												<li class="pengyouquan"><img src="img/pengyouquan.png" /></li>
+												<li class="weixinhaoyou"><img src="img/weixin.png" /></li>
+											</ul>
+										</div>
+									</li>-->
+								</ul>
+								<ul class="mui-table-view guanzhu_">
+									<!--<li class="mui-table-view-cell mui-media">
+										<div class=' top-con tp-padding'>
+									
+											<div class=" left-content">
+												<div class="content-top">
+													<h1>成就所当绵历岁时且由众手全羣共喻成就所当绵历岁时</h1>
+													<p>成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻成就，所当绵历岁时，且由众手，全羣共喻</p>
+												</div>
+
+												<div class="lz clearfix">
+													<div class="mui-pull-left imgaa"><img src="img/mogu.png" /></div>
+													<div class="mui-pull-left">
+														<p>给您添蘑菇了</p>
+														<p>源自方圆十里</p>
+													</div>
+												</div>
+											</div>
+										<div style="width: 80px;"><img src="img/guangguao.png" alt="" class="right-img" /></div>
+										</div>
+										<div class="fenxiang clearfix tp-padding">
+											<span class="fl">
+												分享到
+											</span>
+											<ul class="clearfix fl">
+												<li class="pengyouquan"><img src="img/pengyouquan.png" /></li>
+												<li class="weixinhaoyou"><img src="img/weixin.png" /></li>
+											</ul>
+										</div>
+									</li>-->
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div class="mui-scroll-wrapper">
+							<div class="mui-scroll">
+								<ul class="mui-table-view tuijian_">
+									<!--<li class="mui-table-view-cell mui-media">
+										<div class=' top-con tp-padding'>
+											<img src="img/guangguao.png" alt="" class="right-img" />
+											<div class=" left-content ">
+												<div class="content-top tp-padding">
+													<h1 style="">盛开的减肥还是盛开的减肥还是盛开的减肥还是盛开的减肥还是</h1>
+													<p>成就，所当绵历岁时，且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手且由众手，全羣共喻成就，所当绵历岁时，且由众手，</p>
+												</div>
+											</div>
+										</div>
+										<div class="edit" style="">
+													<p class="yiguanzhu"><span >+&nbsp;</span>取&nbsp;消&nbsp;关&nbsp;注</p>
+										</div> 
+										<div class="edit" style="">
+													<p class="weiguanzhu"><span >+&nbsp;</span>关&nbsp;&nbsp;注</p>
+										</div>
+									</li>-->
+								</ul>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab" style="position: fixed; margin-bottom: -50px;">
+			<a class="mui-tab-item" id="fabiao.html">
+				<span class="plus" style="margin-bottom: -45px;">
+					<img src="img/jia.png" />
+				</span>
+			</a>
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.pullToRefresh.js"></script>
+		<script src="js/mui.pullToRefresh.material.js"></script>
+		<!--<script src="js/jquery-2.1.0.js"></script>-->
+		<script type="text/javascript" src="js/castapp.js"></script>
+		<script type="text/javascript" src="js/base/zepto.js"></script>
+		<!--<script src="js/base/guanzhu.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/guanzhu.js"></script>
+		<script>
+			var _jiazai = [];
+			mui.init();
+			ca.init();
+			(function($) {
+				//阻尼系数
+				var deceleration = mui.os.ios ? 0.003 : 0.0009;
+				$('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: deceleration
+				});
+				$.ready(function() {
+//					alert( "IMEI: " + plus.device.imei );
+					//循环初始化所有下拉刷新，上拉加载。
+					$.each(document.querySelectorAll('.mui-slider-group .mui-scroll'), function(index, pullRefreshEl) {
+
+						$(pullRefreshEl).pullToRefresh({
+							down: { //下拉刷新
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										if(index == 0) { //第一个下拉
+											pagearrguanzhu.page = 1;
+											document.getElementsByClassName('guanzhu_')[0].innerHTML = '';
+											document.getElementsByClassName('zhiding_')[0].innerHTML = '';
+											getzhiding();
+											getNewsCollectList();
+
+										} else if(index == 1) { //2个
+											pagearrtuijian.page = 1;
+											document.getElementsByClassName('tuijian_')[0].innerHTML = '';
+											getNewsTuijianList();
+										}
+										self.refresh(true); //重置上拉加载
+										setTimeout(function() {
+											self.endPullDownToRefresh(); //动画重置
+										}, 100);
+									}, 800);
+								}
+							},
+							up: {
+								callback: function() {
+									var self = this;
+									setTimeout(function() {
+										if(index == 0) { //第一个下拉
+											jiazai1 = self;
+											getNewsCollectList();
+
+										} else if(index == 1) { //2个
+											jiazai2 = self;
+											getNewsTuijianList();
+										}
+										setTimeout(function() {
+											self.endPullUpToRefresh(_jiazai[index]);
+										}, 500);
+									}, 1000);
+								}
+							}
+						});
+					});
+				});
+			})(mui);
+			//轮播图控制
+			//			mui('.mui-slider1').slider({
+			//			  interval:3000//自动轮播周期，若为0则不自动播放，默认为0；
+			//			});
+			//接收登录成功的通知
+			window.addEventListener('RefreshInfo', function(event) {
+				//刷新关注
+				pagearrguanzhu.page = 1;
+				document.getElementsByClassName('guanzhu_')[0].innerHTML = '';
+				getNewsCollectList();
+				//刷新推荐
+				pagearrtuijian.page = 1;
+				document.getElementsByClassName('tuijian_')[0].innerHTML = '';
+				getNewsTuijianList();
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
+	<style>
+		.mui-bar-nav {
+		     -webkit-box-shadow: 0px 0px 0px; 
+		     box-shadow:  0px 0px 0px; 
+		     border-bottom: 0px solid #eee;
+		     color:#fff!important;
+		}
+		* {
+			-webkit-touch-callout:none;
+			-webkit-user-select:none;
+			-khtml-user-select:none;
+			-moz-user-select:none;
+			-ms-user-select:none;
+			user-select:none;
+			}
+			.tanchu{
+				background-color: #383c3f!important;
+				position:relative;
+				margin-top: -2px;
+				margin-right: 20px;
+				width: initial;
+				float: right;
+				z-index: 999;
+			}
+			.mui-backdrop{
+				z-index: 5;
+			}
+			.tanchu>ul{
+				background-color: #383c3f!important;
+				color: #fff;
+			}
+		header>a{color: #fff;}
+	</style>
+	<body>
+		<div style="height: 25px;width:100%;background-color: #2e3235; position: fixed; z-index: 999; "></div>
+		<header class="mui-bar mui-bar-nav" style="height:44px!important; margin-top:24px; background-color: #383c3f; display: ;">
+			
+		    <a class="public-back mui-icon mui-icon-closeempty mui-pull-left" style="font-size: 40px; margin-top: -10px; margin-left: -18px;"></a>
+		    <!--<h1 class="mui-title">文章链接</h1>-->
+		    <a class=" mui-icon mui-icon-bars mui-pull-right fuzhi " ></a>
+		   <!--<a href="#popover" id="openPopover" class="mui-btn mui-btn-primary mui-btn-block">打开弹出菜单</a>-->
+		   <div id="popover" class="mui-popover tanchu" >
+			  <ul class="mui-table-view">
+			    <li class="mui-table-view-cell fuzhilianjie"><a href="#">复制链接</a></li>
+			  </ul>
+			</div>
+		</header>
+ 			
+		<!--<input type="button" onClick="copyUrl2()" value="点击复制代码" />-->  
+		<script src="js/mui.min.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script type="text/javascript">
+			var _self,news_url;
+			mui.init({
+				swipeBack:true //开启右滑关闭功能  
+			})
+			var subpage_style = {
+				top: '64px',
+				bottom: '0px',
+				errorPage:'none',//窗口加载错误时跳转的页面地址
+				scrollIndicator:'none',// 当你的界面的内容足够多的时候，会出现滚动条，这个是隐藏滚动条
+			};	
+			mui.plusReady(function() {
+				_self = plus.webview.currentWebview();  //获得自己
+				news_url = _self.news_url;
+				$('#biao1').val(news_url);
+//				alert(news_url);
+				//直接跳转
+//				location.href=news_url;
+//				_self.show('none'); 
+				plus.navigator.setStatusBarBackground('#FF0000');
+				var self = plus.webview.currentWebview();
+				var sub = plus.webview.create(news_url, news_url, subpage_style);
+				self.append(sub);
+			})
+			window.addEventListener('xianshi',function(event){
+				
+				_self.show('none'); 
+				
+			})
+			$('.public-back').on('tap',function(){
+				_self.close('slide-out-right');
+			});
+			
+		
+			/**
+			 * @description 设置剪贴板内容（复制） 
+			 */
+			function setClipbordText(txt) {
+			    if(!window.plus) return;
+			    if(mui.os.android) {
+			        var Context = plus.android.importClass("android.content.Context");
+			        var main = plus.android.runtimeMainActivity();
+			        var clip = main.getSystemService(Context.CLIPBOARD_SERVICE);
+			        plus.android.invoke(clip,"setText",txt);
+			    } else {
+			        var UIPasteboard  = plus.ios.importClass("UIPasteboard");
+			        var generalPasteboard = UIPasteboard.generalPasteboard();
+			        generalPasteboard.setValueforPasteboardType(txt,"public.utf8-plain-text");
+			    }
+			    mui.toast('复制成功');
+			   	mui('#popover').popover('hide');
+			}
+			//点击btn1按钮复制div里面的内容到剪贴板
+			var po = true;
+			$('.fuzhi').on('tap',function(){
+//				var txt = document.querySelector('#div').innerText;
+//			    setClipbordText(news_url);
+				if(po){
+					mui('#popover').popover('show');
+					po = false;
+				}else{
+					mui('#popover').popover('hide');
+					po = true;
+				}
+
+			});
+			
+			$('.fuzhilianjie').on('tap',function(){
+//				var txt = document.querySelector('#div').innerText;
+			    setClipbordText(news_url);
+			});
+		</script>
+	</body>
+
+</html>

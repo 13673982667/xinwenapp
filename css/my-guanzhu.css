@@ -1,0 +1,179 @@
+header {
+	background-color: #5FB5FE!important;
+}
+
+header .search {
+	position: relative;
+	width: 76%!important;
+	margin: 8px auto 0 auto;
+}
+
+header div.search img {
+	position: absolute;
+	top: 7px;
+	left: 7px;
+	width: 13px;
+	height: 13px;
+}
+
+header div.search input {
+	margin: 0;
+	height: 28px;
+	font-size: 11px;
+	padding-left: 28px;
+	color: #999;
+	border-radius: 5px;
+	border: none;
+}
+.mui-content{
+	background-color: #fff!important;
+}
+
+.mui-content div.fellow div.fellow-wrap{
+	padding: 8px 0;
+	width: 23%;
+	height: 35px;
+	margin: 0 auto;
+}
+.mui-content div.fellow span {
+	font-weight: 600;
+	font-size: 16px;
+}
+.mui-content div.fellow img.fellow{
+	width: 7px;
+	height: 4px;
+	margin-top: 8px;
+}
+.mui-content div.fellow img.yellow-bar {
+	margin-top: 5px;
+	height: 2px;
+	width: 30px;
+}
+
+/*我的关注的详情*/
+.mui-content .guanzhu-desc {
+	position: fixed;
+	z-index: 111111;
+	top: 80px;
+	height: 162px;
+	width: 100%;
+	border-top: 1px solid #DDDDDD;
+	background-color: rgba(255, 255, 255, 1);
+	padding-top: 15px;
+	
+}
+.mui-content .guanzhu-desc div.wode-guanzhu{
+	margin-bottom: 15px;
+}
+.mui-content .guanzhu-desc h3{
+	margin-bottom: 15px;
+	font-size: 12px;
+	color: #666666;
+}
+.mui-content .guanzhu-desc span{
+	display: inline-block;
+	font-size: 13px;
+	color: #454545;
+	background-color: #F2F2F2;
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin-right: 15px;
+	border-radius: 4px;
+}
+
+/*选中我的详情的样式*/
+.guanzhu-active{
+	color: #FD9E33!important;
+}
+.mui-content div.banner img {
+	width: 100%;
+	height: 150px;
+}
+
+.mui-content div.person {
+	margin-top: 16px;
+	margin-bottom: 13px;
+	color: #737373;
+}
+
+.mui-content div.person .touxiang img {
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+}
+.mui-content div.person>img{
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.mui-content div.person span.nickname {
+	font-size: 14px;
+	color: #737373;
+	margin-top: 10px;
+}
+
+.mui-content div.person span.cancle {
+	margin-top: 10px;
+}
+
+.mui-content div.person span.cancle img {
+	height: 11px;
+	width: 11px;
+}
+
+.mui-content div.news h1 {
+	font-family: "微软雅黑";
+	font-weight: 600;
+	font-size: 16px;
+	color: #222222;
+	margin-bottom: 13px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mui-content div.news p {
+	color: #737373;
+	font-size: 14px;
+	line-height: 20px;
+	height: 40px;
+	overflow: hidden;
+	margin-bottom: 5px;
+}
+
+.mui-content div.news-png img {
+	width: 100%;
+	height: 228px;
+}
+
+nav a span.plus {
+	display: block;
+	position: fixed;
+	left: 157px;
+	bottom: 2px;
+	border: 6px solid #F7F7F7;
+	background-color: #F7F7F7;
+	border-radius: 50%;
+	border-bottom: none;
+}
+
+nav a span.plus img {
+	height: 48px;
+	width: 48px;
+}
+nav{
+	border: none!important;
+}
+
+/*遮罩层样式*/
+.mui-backdrop {
+	position: fixed;
+	top: 80px;
+	width: 100%;
+	z-index: 998;
+	background-color: rgba(0, 0, 0, .3);
+}
+

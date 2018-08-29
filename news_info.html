@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/nav-tab.css" />
+		<style type="text/css">
+			body {
+				height: 100vh;
+			}
+			.mui-content{
+				/*background-color: #EFEFEF;*/
+			}
+			.ad-img {
+				height: 88vh;
+				/*display: flex;*/
+				display: inline-block;
+				align-items: center;
+				justify-content: center;
+				/*width: 100%;*/
+				/*height: 00px;*/
+			}
+			
+			.ad-logo {
+				height: 12vh;
+			}
+			
+			.ad-img img,
+			.ad-logo img {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.mui-content {
+				padding: 0!important;
+			}
+			
+			.tiaoguo {
+				position: fixed;
+				top: 25px;
+				right: 15px;
+				border-radius: 5px;
+				background-color: rgba(0, 0, 0, .7);
+				color: #fff;
+				padding: 5px 10px;
+			}
+			#icon-plus{
+				margin-top: -100px;
+			}
+			.mui-icon-plus:before {
+			    font-size:150px;
+			    color: #ccc;
+			}
+			.mui-action-back {
+				position: fixed;
+				top: -10px;
+				left: 15px;
+				border-radius: 5px;
+				/*background-color: rgba(0, 0, 0, .3);*/
+				/*color: #fff;*/
+				padding: 5px 7px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav" style="height: 64px;padding-top: 20px;">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style=""></a>
+		    <h1 class="mui-title">方圆十里</h1>
+		</header>-->
+		<!--<div class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></div>-->
+		<div class="mui-content" style="padding-top: 64px;">
+			
+			<a class="ad-img">
+				<!--<div class="tiaoguo">跳过</div>
+				<img src="img/ad-img.png" />-->
+				<!--<a id="icon-plus"><span class="mui-icon mui-icon-plus"></span></a>-->
+			</a>
+			
+			<div class="ad-logo">
+				<img src="img/ad-logo.png" />
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script type="text/javascript">
+			var content,guanggaoleng,moderator_id,_self,news_array,news_url,ggtime;
+			//获取app广告参数
+			getggconfig();
+			mui.init({
+				swipeBack:true, //启用右滑关闭功能
+			})
+			ca.init();
+			
+			mui.plusReady(function(){
+				_self = plus.webview.currentWebview();  //获得自己
+				
+				plus.navigator.setStatusBarStyle( "light" );//状态栏颜色
+			    news_array = JSON.parse(_self.news_arr);//获得参数
+				news_id = news_array.id;
+			    getguanggao(news_id);
+//				news_url = _self.news_url;
+				getNewsInfo(news_id);
+//				_self.show('slide-in-right', 300); //加载完后显示  
+//				plus.nativeUI.closeWaiting(); //关闭等待框
+				setTimeout(function(){
+					plus.nativeUI.closeWaiting(); //关闭等待框
+//					close();
+				},3000);
+			});
+			
+			//关闭页面
+			function close(){
+				
+				var target = plus.webview.getWebviewById('news_info2.html')//mui的底部导航的界面id 就是url	
+				mui.fire(target, 'xianshi', {});	
+				setTimeout(function(){_self.close("none");},500)
+			}
+			function getguanggao(news_id){
+				if(!news_id){
+					return ;
+				}
+				var data = {
+					news_id:news_id
+				} 
+				$.ajax({ //获取文章广告
+					type:"get",
+					url:xinwen.url+'/getNewsGuanggao',
+					dataType:"json",
+					data:data,
+					timeout:5000,
+					success:function(res){
+						if(res.code == 1){
+							console.log('--------'+JSON.stringify(res)); 
+							if(res.data && res.data != ''){
+								ggtime = res.data['ggtime'] * 1000;  //修改时间
+								//修改广告链接
+								if(res.data['arr'][0]['ggurl'] && res.data['arr'][0]['ggurl'].length>0){
+									$('.ad-img').attr('href',res.data['arr'][0]['ggurl']);
+								}
+								var str = $(viewobj.img(res.data['arr'][0]['ggimg'] || ''));
+								var tiaoguo = $(viewobj.tiaoguo());
+								tiaoguo.on('tap',function(){
+									close();
+								});
+								$('.ad-img').append(str,tiaoguo);
+								lunbo(res.data['arr'],str);
+								setTimeout(function(){ 
+//								_self.show('slide-in-right', 300); //加载完后显示  
+								plus.nativeUI.closeWaiting(); //关闭等待框
+								},200);
+							}else{//没有广告
+								plus.nativeUI.closeWaiting(); //关闭等待框
+								close();
+							}
+						}else{
+							plus.nativeUI.closeWaiting(); //关闭等待框
+							close();
+						}
+					},
+					error:function(e){
+						console.log('获取广告失败');
+					}
+				});
+			}
+			function lunbo (arr,obj){
+//				console.log(JSON.stringify(arr));
+				var imgs = arr;//存放轮播图地址
+				var index =0;  //全局索引
+				var time = ggtime; //轮播时间
+//				console.log(JSON.stringify(arr));
+				obj.attr('src',arr[index]['ggimg']); //开始默认第一个
+				
+				//定时循环
+				var itv = setInterval(num,time);
+				//控制全局索引
+				function num(){
+					index++;
+					if(index >= imgs.length){
+						setTimeout(function(){
+							close()
+						},500);
+					}else{
+						bian(index);
+					}
+				}
+				//根据改变图片和选项样式
+				function bian(iex){
+					obj.attr("src",imgs[iex]['ggimg']);
+				}
+			}//轮播 end
+			
+			var viewobj = {
+				jiahao:function(){
+					return '<a id="icon-plus"><span class="mui-icon mui-icon-plus"></span></a>';
+				},
+				tiaoguo: function(){
+					return '<div class="tiaoguo">跳过</div>';
+				},
+				img: function(img){
+					return '<img src="'+(img || '')+'" />';
+				},
+			}
+			
+			//获取app广告参数
+			function getggconfig(){
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/getggconfig',
+					dataType:"json",
+					success:function(e){
+						if(e.code == 1){
+//							ggtime = e.data['time'] * 1000;  //修改时间
+							$('.ad-logo>img').attr('src',e.data['appguanggaoimg']); //修改图片
+//														alert(e.data['appguanggaoimg']);
+							
+						}
+					}
+				});
+			}
+			function getNewsInfo(news_id){
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/getNewsInfo',
+					data:{news_id:news_id},
+					dataType:"json",
+					success:function(e){
+						if(e.code == 1){
+							$('.mui-title').html(e.data[0]['title']);	
+						}
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

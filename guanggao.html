@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css" />
+		<link rel="stylesheet" href="css/guanggao.css" />
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+	
+		<div class="mui-action-back mui-icon mui-icon-checkmarkempty mui-pull-right" style="font-size:50px; right:15px; margin-top: 28px; left:inherit; line-height: 30px;"></div>
+		<div class="mui-content">
+			
+			<div class="ad-img">
+				<!--<div class="tiaoguo">跳过</div>
+				<img src="img/ad-img.png" />-->
+				<!--<a id="icon-plus"><span class="mui-icon mui-icon-plus"></span></a>-->
+				<div class="gg_url">点击添加链接</div>
+				<div class="gg_address">点击添加地址</div>
+				<div class="gg_tel">点击添加电话</div>
+			</div>
+			
+			<div class="ad-logo">
+				<img src="img/ad-logo.png" />
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/castapp.js"></script>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/xinwen.js"></script>
+		<script src="js/api/guanggao.js"></script>
+		<script type="text/javascript">
+			var content,guanggaoleng,moderator_id,_self,ggid;
+			mui.init({
+				swipeBack:true, //启用右滑关闭功能
+				beforeback: function(){
+					//获得列表界面的webview
+					var parent = plus.webview.getWebviewById('guanggao-add.html');
+					//触发列表界面的自定义事件（refresh）,从而进行数据刷新
+					mui.fire(parent,'refresh');
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			})
+			ca.init();
+			mui.plusReady(function(){
+				
+				_self = plus.webview.currentWebview();  //获得自己
+				_self.show('slide-in-right', 300);
+				plus.nativeUI.closeWaiting();
+//				content = JSON.parse(_self.content);//获得参数
+				if(_self.ggid){ //如果有广告id
+					ggid = _self.ggid;
+					getGuanggaoInfo(_self.ggid);
+				}else if(_self.moderator_id){ //或者有圈子（企业）id
+//					upview(moderator_id);
+				}else{ //否则back
+					mui.toast('参数错误');
+					mui.back();
+				}
+				
+			});
+			
+//			//更新图片
+//			function upview(moderator_id){
+//				if(!moderator_id){
+//					mui.toast('error');
+//					mui.back();
+//				}
+//				var user_id = localStorage.getItem('userId');
+//				if(!user_id){
+//					mui.toast('error');
+//					mui.back();
+//				}
+//				var data = {
+//					moderator_id:moderator_id
+//				}
+//				$.ajax({
+//					type:"get",
+//					url:xinwen.url+'/getguanggaolist?user_id='+user_id,
+//					dataType:"json",
+//					data:data,
+//					async:false,
+//					success:function(res){
+//						console.log(JSON.stringify(res));
+//						if(res.code == 1){
+//							var str = $(viewobj.img(res.data[0]['ggimg']));
+//							str.attr('alt',res.data[0]['id']).on('tap',function(){
+//								upggimg($(this));
+//							});
+////							var tiaoguo = $(viewobj.tiaoguo());
+//							$('.ad-img').append(str);
+//						}else if(res.code == 10){
+//							var str = $(viewobj.jiahao()).on('tap',function(){
+//								addggimg($(this));
+//							});
+//							$('.ad-img').append(str);
+//						}
+//					}
+//				})
+//			}
+			
+
+			//修改图片
+			function upggimg(obj){
+				var arr = ['照相机', '相册'];
+				castapp.actionSheet(arr, {
+					succFn: function(data) {
+						var ggid = obj.attr('alt');
+						if(!ggid){
+							return mui.toast('修改失败');
+						}
+						var user_id = localStorage.getItem('userId');
+						if(!user_id){
+							return mui.toast('出错了，刷新试试');
+						}
+						var data = {
+							ggid:ggid,
+							ggimg:data
+						}
+						$.ajax({
+							type:"get",
+							url:xinwen.url+'/upggimg?user_id='+user_id,
+							dataType:"json",
+							data:data,
+							success:function(res){
+								console.log(JSON.stringify(res));
+								if(res.code == 1){
+									obj.attr('src',data.ggimg);
+									mui.toast('修改成功');
+								}
+							}
+						});
+					},
+					//是否开启上传
+					isUpload: true,
+					//上传地址
+					uploadUrl: xinwen.url + '/upload_file_fengmian',
+				})
+			}
+			
+			//添加广告图片
+//			function addggimg(obj){
+//				var _self = obj;
+//				if(!moderator_id){
+//					return mui.toast('出错了，刷新试试');
+//				}
+//				var user_id = localStorage.getItem('userId');
+//				if(!user_id){
+//					return mui.toast('出错了，刷新试试');
+//				}
+//				if(!check_length()){
+//					return mui.toast('广告数量超过限制');
+//				}
+				//添加广告图片
+//				var arr = ['照相机', '相册'];
+//				castapp.actionSheet(arr, {
+//					succFn: function(data) {
+//						//将添加的图片保存数据库
+//						var data = {
+//							moderator_id:moderator_id,
+//							ggimg : data
+//						}
+//						console.log(xinwen.url+'/addguanggaoimg?user_id='+user_id);
+//						$.ajax({
+//							type:"get",
+//							url:xinwen.url+'/addguanggaoimg?user_id='+user_id,
+//							dataType:"json",
+//							data:data,
+//							async:false,
+//							success:function(e){
+//								if(e.code == 1){
+//									var str = $(viewobj.img(data.ggimg));
+//									str.attr('alt',e.data).on('tap',function(){
+//										upggimg($(this));
+//									});
+//									$('.ad-img').append(str);
+//									obj.remove();
+//								}
+//							}
+//						});
+//						
+//					},
+//					isUpload: true,
+//					uploadUrl: xinwen.url + '/upload_file_fengmian',
+//				})
+//			}
+			
+			//根据广告id查广告
+			function getGuanggaoInfo(ggid){
+				$.ajax({
+					type:"get",
+					url:xinwen.url+'/getGuanggaoInfo?ggid='+ggid,
+					dataType:"json",
+//					data:data,
+					async:false,
+					success:function(e){
+
+						if(e.code == 1){
+							var str = $(viewobj.img(e.data['ggimg']));
+							str.attr('alt',e.data['id']).on('tap',function(){
+								upggimg($(this));
+							});
+							$('.ad-img').append(str);
+							if(e.data['ggurl']){
+								$('.gg_url').html(e.data['ggurl']);
+							}
+							if(e.data['str_address']){
+								$('.gg_address').html(e.data['str_address']);
+							}
+							if(e.data['tel']){
+								$('.gg_tel').html(e.data['tel']);
+							}
+						}
+					}
+				});
+			}
+			
+			//修改广告链接
+			$('.gg_url').on('tap',function(){
+				mui.openWindow({
+					url:'addguanggao_url.html',
+					id:'addguanggao_url.html',
+					extras:{
+						content : $('.gg_url').html() == '点击添加链接' ? '' : $('.gg_url').html(),
+						ggid:ggid
+					}
+				})
+			});
+			//修改电话
+			$('.gg_tel').on('tap',function(){
+				mui.prompt(' ','请输入手机号','修改联系方式',['取消','确定'],function(e){
+					if (e.index == 1) {
+						value = e.value;
+						if(!(/^1[34578]\d{9}$/.test(value)) && value .length > 0){
+							return mui.toast('手机号格式错误');
+						}
+						var data = {
+							phone:value
+						};
+						var data = {
+							ggid:ggid,
+							tel:value
+						}
+						$.ajax({
+							type:"get",
+							url:xinwen.url+'/upgg',
+							data:data,
+							success:function(e){
+								if(e.code == 1){
+									mui.toast('ok')
+								}
+								$('.gg_tel').html(value == '' ? '点击添加电话' : value);
+							},
+							error:function(){
+								mui.toast('修改失败');
+							}
+						});
+					}
+				});
+			});
+			//广告链接修改通知
+			window.addEventListener('fabiao-url-back',function(e){
+				var url = e.detail.url;
+					$('.gg_url').html(url == '' ? '点击添加链接' : url);			
+			});
+			//地址
+			window.addEventListener('address-back',function(e){
+				var data = e.detail.data;
+					$('.gg_address').html(data.str_address == '' ? '点击添加地址' : data.str_address );			
+			});
+			
+			
+			var viewobj = {
+				jiahao:function(){
+					return '<a id="icon-plus"><span class="mui-icon mui-icon-plus"></span></a>';
+				},
+				tiaoguo: function(){
+					return '<div class="tiaoguo">跳过</div>';
+				},
+				img: function(img){
+					return '<img src="'+(img || '')+'" />';
+				},
+			}
+		</script>
+	</body>
+
+</html>
